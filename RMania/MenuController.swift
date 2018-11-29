@@ -13,6 +13,7 @@ class MenuController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var imageview2: UIImageView!
     @IBOutlet weak var imageview3: UIImageView!
     @IBOutlet weak var imageview4: UIImageView!
+    
     @IBOutlet weak var btnToImageView1: UIButton!
     @IBOutlet weak var btnToImageView2: UIButton!
     @IBOutlet weak var btnToImageView3: UIButton!
@@ -23,12 +24,24 @@ class MenuController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var lblItemD3: UILabel!
     @IBOutlet weak var lblItemD4: UILabel!
     @IBOutlet weak var lblItemD5: UILabel!
+    
     @IBOutlet weak var lblDescription1: UILabel!
     @IBOutlet weak var lblDescription2: UILabel!
     @IBOutlet weak var lblDescription3: UILabel!
     @IBOutlet weak var lblDescription4: UILabel!
     @IBOutlet weak var lblDescription5: UILabel!
     
+    @IBOutlet weak var txtAddItemName: UITextField!
+    @IBOutlet weak var txtAddDescription: UITextField!
+    @IBOutlet weak var txtCondition: UITextField!
+    @IBOutlet weak var txtPrice: UITextField!
+    @IBOutlet weak var txtExtra: UITextField!
+    
+    @IBOutlet weak var btnItemName: UIButton!
+    @IBOutlet weak var btnDescription: UIButton!
+    @IBOutlet weak var btnCondition: UIButton!
+    @IBOutlet weak var btnPrice: UIButton!
+    @IBOutlet weak var btnExtra: UIButton!
     
     var imageNun = 0
     
@@ -37,6 +50,39 @@ class MenuController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
         // Do any additional setup after loading the view.
     }
+    
+    @IBAction func addItemName(_ sender: Any) {
+        if txtAddItemName.text != nil {
+            lblDescription1.text = txtAddItemName.text
+        }
+    }
+    
+    @IBAction func addDescription(_ sender: Any) {
+        if txtAddDescription.text != nil {
+            lblDescription2.text = txtAddDescription.text
+        }
+    }
+    
+    @IBAction func addCondition(_ sender: Any) {
+        if txtCondition.text != nil {
+            lblDescription3.text = txtCondition.text
+        }
+    }
+    
+    @IBAction func addPrice(_ sender: Any) {
+        if txtPrice.text != nil {
+            if let numbers = Int(txtPrice.text!){
+                lblDescription4.text = String(numbers)
+            }
+        }
+    }
+    
+    @IBAction func addExtra(_ sender: Any) {
+        if txtExtra.text != nil {
+            lblDescription5.text = txtExtra.text
+        }
+    }
+    
     
     @IBAction func Winners(_ sender: Any) {
         let goTo_Winners = self.storyboard?.instantiateViewController(withIdentifier: "HistoricController") as! HistoricController
