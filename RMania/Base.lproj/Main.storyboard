@@ -170,6 +170,9 @@
                                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jyu-iT-SVw">
                                                                                 <rect key="frame" x="65.5" y="136" width="46" height="30"/>
                                                                                 <state key="normal" title="Button"/>
+                                                                                <connections>
+                                                                                    <action selector="btnImageView2:" destination="wi5-Wr-SvA" eventType="touchUpInside" id="q2X-IC-Koq"/>
+                                                                                </connections>
                                                                             </button>
                                                                         </subviews>
                                                                     </stackView>
@@ -190,6 +193,9 @@
                                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ijI-T3-Yze">
                                                                                 <rect key="frame" x="65.5" y="136" width="46" height="30"/>
                                                                                 <state key="normal" title="Button"/>
+                                                                                <connections>
+                                                                                    <action selector="btnAddImage3:" destination="wi5-Wr-SvA" eventType="touchUpInside" id="prs-Tw-goE"/>
+                                                                                </connections>
                                                                             </button>
                                                                         </subviews>
                                                                     </stackView>
@@ -202,6 +208,9 @@
                                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7LD-5p-p8Y">
                                                                                 <rect key="frame" x="65.5" y="136" width="46" height="30"/>
                                                                                 <state key="normal" title="Button"/>
+                                                                                <connections>
+                                                                                    <action selector="btnAddImage4:" destination="wi5-Wr-SvA" eventType="touchUpInside" id="0Sc-gy-PGr"/>
+                                                                                </connections>
                                                                             </button>
                                                                         </subviews>
                                                                     </stackView>
@@ -448,8 +457,24 @@
                     </view>
                     <size key="freeformSize" width="375" height="1000"/>
                     <connections>
+                        <outlet property="btnImageView4" destination="7LD-5p-p8Y" id="7ES-ou-vpA"/>
                         <outlet property="btnToImageView1" destination="FfC-5u-zaG" id="l7h-SS-R1Y"/>
+                        <outlet property="btnToImageView2" destination="ijI-T3-Yze" id="ue9-Uc-sSs"/>
+                        <outlet property="btnToImageView3" destination="ijI-T3-Yze" id="N22-3w-p17"/>
                         <outlet property="imageview1" destination="eQj-Ey-gzu" id="lsU-yz-3T0"/>
+                        <outlet property="imageview2" destination="Clf-Rs-h4G" id="CuQ-fs-gXM"/>
+                        <outlet property="imageview3" destination="OLB-Ar-bhf" id="xUo-Gd-BU6"/>
+                        <outlet property="imageview4" destination="rUm-SU-QTh" id="vq2-Qv-Kss"/>
+                        <outlet property="lblDescription1" destination="Uet-Lo-QZ4" id="8gd-LD-3Om"/>
+                        <outlet property="lblDescription2" destination="BzE-vc-0Xd" id="kiZ-a7-APx"/>
+                        <outlet property="lblDescription3" destination="T9h-4p-bQ9" id="F8U-3E-IaB"/>
+                        <outlet property="lblDescription4" destination="qyW-SG-KPz" id="Jb8-GV-eHl"/>
+                        <outlet property="lblDescription5" destination="PdD-h3-Wa9" id="nMn-Dp-luS"/>
+                        <outlet property="lblItemD1" destination="bRh-fe-lZW" id="fb4-E3-PdD"/>
+                        <outlet property="lblItemD2" destination="Vgg-GF-lmy" id="Ijt-JU-hsB"/>
+                        <outlet property="lblItemD3" destination="WLa-yR-LVD" id="Hip-qq-nS9"/>
+                        <outlet property="lblItemD4" destination="ehZ-6k-GXI" id="inl-zK-f1V"/>
+                        <outlet property="lblItemD5" destination="ZDa-1s-2op" id="QLM-Pj-Swt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Fj-Rd-6Kd" userLabel="First Responder" sceneMemberID="firstResponder"/>

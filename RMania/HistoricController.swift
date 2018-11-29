@@ -21,5 +21,6 @@ class HistoricController: UIViewController {
         let goBack = self.storyboard?.instantiateViewController(withIdentifier: "MenuController") as! MenuController
         self.present(goBack, animated: true, completion: nil)
     }
+    
 
 }
