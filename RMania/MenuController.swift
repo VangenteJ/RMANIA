@@ -47,6 +47,7 @@ class MenuController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        imageNun = 0
 
         // Do any additional setup after loading the view.
     }
@@ -54,18 +55,22 @@ class MenuController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBAction func addItemName(_ sender: Any) {
         if txtAddItemName.text != nil {
             lblDescription1.text = txtAddItemName.text
+            txtAddItemName.text = nil
         }
     }
     
     @IBAction func addDescription(_ sender: Any) {
         if txtAddDescription.text != nil {
             lblDescription2.text = txtAddDescription.text
+            txtAddDescription.text = nil
         }
+        
     }
     
     @IBAction func addCondition(_ sender: Any) {
         if txtCondition.text != nil {
             lblDescription3.text = txtCondition.text
+            txtCondition.text = nil
         }
     }
     
@@ -73,6 +78,7 @@ class MenuController: UIViewController, UIImagePickerControllerDelegate, UINavig
         if txtPrice.text != nil {
             if let numbers = Int(txtPrice.text!){
                 lblDescription4.text = String(numbers)
+                txtPrice.text = nil
             }
         }
     }
@@ -80,6 +86,7 @@ class MenuController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBAction func addExtra(_ sender: Any) {
         if txtExtra.text != nil {
             lblDescription5.text = txtExtra.text
+            txtExtra.text = nil
         }
     }
     
