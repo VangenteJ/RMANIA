@@ -13,6 +13,8 @@
 		0C6BD55321AF4A7200048769 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C6BD55221AF4A7200048769 /* Assets.xcassets */; };
 		0C6BD55621AF4A7200048769 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C6BD55421AF4A7200048769 /* LaunchScreen.storyboard */; };
 		0C6BD55E21AF4A8D00048769 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0C6BD55D21AF4A8D00048769 /* GoogleService-Info.plist */; };
+		0C6BD56021B007ED00048769 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6BD55F21B007ED00048769 /* MenuController.swift */; };
+		0C6BD56221B0080500048769 /* HistoricController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6BD56121B0080500048769 /* HistoricController.swift */; };
 		A5B8032ED75570F9A84AC490 /* Pods_RMania.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFC81127D6FE20FE9428DE8E /* Pods_RMania.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +27,8 @@
 		0C6BD55521AF4A7200048769 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0C6BD55721AF4A7200048769 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0C6BD55D21AF4A8D00048769 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0C6BD55F21B007ED00048769 /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
+		0C6BD56121B0080500048769 /* HistoricController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricController.swift; sourceTree = "<group>"; };
 		1F9D47C8AA6BB1F1B9496972 /* Pods-RMania.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RMania.debug.xcconfig"; path = "Target Support Files/Pods-RMania/Pods-RMania.debug.xcconfig"; sourceTree = "<group>"; };
 		7F3073A99E0B3D4F04D75139 /* Pods-RMania.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RMania.release.xcconfig"; path = "Target Support Files/Pods-RMania/Pods-RMania.release.xcconfig"; sourceTree = "<group>"; };
 		EFC81127D6FE20FE9428DE8E /* Pods_RMania.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RMania.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,6 +69,8 @@
 			children = (
 				0C6BD54B21AF4A7100048769 /* AppDelegate.swift */,
 				0C6BD54D21AF4A7100048769 /* ViewController.swift */,
+				0C6BD55F21B007ED00048769 /* MenuController.swift */,
+				0C6BD56121B0080500048769 /* HistoricController.swift */,
 				0C6BD54F21AF4A7100048769 /* Main.storyboard */,
 				0C6BD55221AF4A7200048769 /* Assets.xcassets */,
 				0C6BD55421AF4A7200048769 /* LaunchScreen.storyboard */,
@@ -88,7 +94,6 @@
 				1F9D47C8AA6BB1F1B9496972 /* Pods-RMania.debug.xcconfig */,
 				7F3073A99E0B3D4F04D75139 /* Pods-RMania.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -219,7 +224,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C6BD56221B0080500048769 /* HistoricController.swift in Sources */,
 				0C6BD54E21AF4A7100048769 /* ViewController.swift in Sources */,
+				0C6BD56021B007ED00048769 /* MenuController.swift in Sources */,
 				0C6BD54C21AF4A7100048769 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
