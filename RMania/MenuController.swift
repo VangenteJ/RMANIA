@@ -48,9 +48,16 @@ class MenuController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewDidLoad() {
         super.viewDidLoad()
         imageNun = 0
+        isImage()
+        
 
         // Do any additional setup after loading the view.
     }
+    
+    @IBAction func Pay_PayPal(_ sender: Any) {
+        adminAccess()
+    }
+    
     
     @IBAction func addItemName(_ sender: Any) {
         if txtAddItemName.text != nil {
@@ -97,21 +104,21 @@ class MenuController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @IBAction func btnAddImage1(_ sender: Any) {
-        addImage()
         imageNun = 1
+        addImage()
     }
     
     @IBAction func btnImageView2(_ sender: Any) {
-        addImage()
         imageNun = 2
+        addImage()
     }
     @IBAction func btnAddImage3(_ sender: Any) {
-        addImage()
         imageNun = 3
+        addImage()
     }
     @IBAction func btnAddImage4(_ sender: Any) {
-        addImage()
         imageNun = 4
+        addImage()
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -155,6 +162,41 @@ class MenuController: UIViewController, UIImagePickerControllerDelegate, UINavig
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
         self.present(actionSheet, animated: true, completion: nil)
+    }
+    func isImage(){
+        let image1:UIImage? = imageview1.image
+        let image2:UIImage? = imageview2.image
+        let image3:UIImage? = imageview3.image
+        let image4:UIImage? = imageview4.image
+        if image1 == nil {
+            imageview1.image = UIImage(named: "RManiav1")
+        }
+        if image2 == nil {
+            imageview2.image = UIImage(named: "RManiav1")
+        }
+        if image3 == nil {
+            imageview3.image = UIImage(named: "RManiav1")
+        }
+        if image4 == nil {
+            imageview4.image = UIImage(named: "RManiav1")
+        }
+    }
+    
+    func adminAccess(){
+        btnToImageView1.isHidden = true
+        btnToImageView2.isHidden = true
+        btnToImageView3.isHidden = true
+        btnImageView4.isHidden = true
+        txtAddItemName.isHidden = true
+        txtAddDescription.isHidden = true
+        txtCondition.isHidden = true
+        txtPrice.isHidden = true
+        txtExtra.isHidden = true
+        btnItemName.isHidden = true
+        btnDescription.isHidden = true
+        btnCondition.isHidden = true
+        btnPrice.isHidden = true
+        btnExtra.isHidden = true
     }
 
 }
