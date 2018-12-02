@@ -70,6 +70,8 @@ class HistoricController: UIViewController, UIImagePickerControllerDelegate, UIN
     override func viewDidLoad() {
         super.viewDidLoad()
         isImage()
+        is_admin()
+        checkContent()
 
         // Do any additional setup after loading the view.
     }
@@ -80,63 +82,17 @@ class HistoricController: UIViewController, UIImagePickerControllerDelegate, UIN
         self.present(goBack, animated: true, completion: nil)
     }
     
-
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
-        if imageNun == 1{
-            imageview1.image = image
-        }else if imageNun == 2{
-            imageview2.image = image
-        }else if imageNun == 3{
-            imageview3.image = image
-        }else if imageNun == 4{
-            imageview4.image = image
-        }else if imageNun == 5{
-            imageview5.image = image
-        }else if imageNun == 6{
-            imageview6.image = image
-        }else if imageNun == 7{
-            imageview7.image = image
-        }else if imageNun == 8{
-            imageview8.image = image
-        }
-        imageNun = 0
-        picker.dismiss(animated: true, completion: nil)
-    }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        picker.dismiss(animated: true, completion: nil)
-    }
-    
-    func addImage(){
-        let imagePickerController = UIImagePickerController()
-        imagePickerController.delegate = self
-        
-        let actionSheet = UIAlertController(title: "Photo Source", message: "Choose source", preferredStyle: .actionSheet)
-        actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action:UIAlertAction) in
-            
-            if UIImagePickerController.isSourceTypeAvailable(.camera){
-                imagePickerController.sourceType = .camera
-                self.present(imagePickerController, animated: true, completion: nil)
-            }
-            
-        }))
-        actionSheet.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (action:UIAlertAction) in
-            
-            imagePickerController.sourceType = .photoLibrary
-            self.present(imagePickerController, animated: true, completion: nil)
-            
-        }))
-        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
-        self.present(actionSheet, animated: true, completion: nil)
-    }
-    
     @IBAction func addDes1(_ sender: Any) {
-        if txtDes1.text != nil{
+        is_admin()
+        if txtDes1.text != ""{
            lblDes1.text = txtDes1.text
+            txtDes1.isHidden = true
+            btnAddDes1.isHidden = true
+            btnAdd1.isHidden = true
+        }else{
+            
         }
+        
     }
     @IBAction func addDes2(_ sender: Any) {
         if txtDes2.text != nil{
@@ -244,6 +200,52 @@ class HistoricController: UIViewController, UIImagePickerControllerDelegate, UIN
         }
     }
     
+    func checkContent(){
+        if imageview1 != UIImage(named: "RManiav1"){
+            lblDes1.isHidden = false
+        }
+        
+        if lblDes2.text == "Label"{
+            imageview2.isHidden = true
+            lblDes2.isHidden = true
+        }
+        
+        if lblDes3.text == "Label"{
+            imageview3.isHidden = true
+            lblDes3.isHidden = true
+        }
+        
+        if lblDes4.text == "Label"{
+            imageview4.isHidden = true
+            lblDes4.isHidden = true
+        }
+        
+        if lblDes4.text == "Label"{
+            imageview4.isHidden = true
+            lblDes4.isHidden = true
+        }
+        
+        if lblDes5.text == "Label"{
+            imageview5.isHidden = true
+            lblDes5.isHidden = true
+        }
+        
+        if lblDes6.text == "Label"{
+            imageview6.isHidden = true
+            lblDes6.isHidden = true
+        }
+        
+        if lblDes7.text == "Label"{
+            imageview7.isHidden = true
+            lblDes7.isHidden = true
+        }
+        
+        if lblDes8.text == "Label"{
+            imageview8.isHidden = true
+            lblDes8.isHidden = true
+        }
+    }
+    
     func is_admin(){
         btnAdd1.isHidden = true
         btnAdd2.isHidden = true
@@ -253,14 +255,72 @@ class HistoricController: UIViewController, UIImagePickerControllerDelegate, UIN
         btnAdd6.isHidden = true
         btnAdd7.isHidden = true
         btnAdd8.isHidden = true
-        lblDes1.isHidden = true
-        lblDes2.isHidden = true
-        lblDes3.isHidden = true
-        lblDes4.isHidden = true
-        lblDes5.isHidden = true
-        lblDes6.isHidden = true
-        lblDes7.isHidden = true
-        lblDes8.isHidden = true
+        txtDes1.isHidden = true
+        txtDes2.isHidden = true
+        txtDes3.isHidden = true
+        txtDes4.isHidden = true
+        txtDes5.isHidden = true
+        txtDes6.isHidden = true
+        txtDes7.isHidden = true
+        txtDes8.isHidden = true
+        btnAddDes1.isHidden = true
+        btnAddDes2.isHidden = true
+        btnAddDes3.isHidden = true
+        btnAddDes4.isHidden = true
+        btnAddDes5.isHidden = true
+        btnAddDes6.isHidden = true
+        btnAddDes7.isHidden = true
+        btnAddDes8.isHidden = true
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+        if imageNun == 1{
+            imageview1.image = image
+        }else if imageNun == 2{
+            imageview2.image = image
+        }else if imageNun == 3{
+            imageview3.image = image
+        }else if imageNun == 4{
+            imageview4.image = image
+        }else if imageNun == 5{
+            imageview5.image = image
+        }else if imageNun == 6{
+            imageview6.image = image
+        }else if imageNun == 7{
+            imageview7.image = image
+        }else if imageNun == 8{
+            imageview8.image = image
+        }
+        imageNun = 0
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func addImage(){
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
         
+        let actionSheet = UIAlertController(title: "Photo Source", message: "Choose source", preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action:UIAlertAction) in
+            
+            if UIImagePickerController.isSourceTypeAvailable(.camera){
+                imagePickerController.sourceType = .camera
+                self.present(imagePickerController, animated: true, completion: nil)
+            }
+            
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (action:UIAlertAction) in
+            
+            imagePickerController.sourceType = .photoLibrary
+            self.present(imagePickerController, animated: true, completion: nil)
+            
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        self.present(actionSheet, animated: true, completion: nil)
     }
 }

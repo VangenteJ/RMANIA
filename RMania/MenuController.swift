@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseDatabase
+import FirebaseAuth
 
 class MenuController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet weak var imageview1: UIImageView!
@@ -49,6 +52,7 @@ class MenuController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewDidLoad()
         imageNun = 0
         isImage()
+        //isLogged()
         
 
         // Do any additional setup after loading the view.
@@ -58,6 +62,13 @@ class MenuController: UIViewController, UIImagePickerControllerDelegate, UINavig
         adminAccess()
     }
     
+    @IBAction func logOut(_ sender: Any) {
+        if Auth.auth().currentUser != nil{
+            try? Auth.auth().signOut()
+            let log_regPage = self.storyboard?.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+            self.present(log_regPage, animated: true, completion: nil)
+        }
+    }
     
     @IBAction func addItemName(_ sender: Any) {
         if txtAddItemName.text != nil {
@@ -197,6 +208,13 @@ class MenuController: UIViewController, UIImagePickerControllerDelegate, UINavig
         btnCondition.isHidden = true
         btnPrice.isHidden = true
         btnExtra.isHidden = true
+    }
+    
+    func isLogged(){
+        if Auth.auth().currentUser == nil{
+            let log_regPage = self.storyboard?.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+            self.present(log_regPage, animated: true, completion: nil)
+        }
     }
 
 }
