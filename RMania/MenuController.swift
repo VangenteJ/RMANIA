@@ -46,6 +46,8 @@ class MenuController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var btnPrice: UIButton!
     @IBOutlet weak var btnExtra: UIButton!
     
+    @IBOutlet weak var editStack: UIStackView!
+    
     var imageNun = 0
     
     override func viewDidLoad() {
@@ -59,7 +61,6 @@ class MenuController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @IBAction func Pay_PayPal(_ sender: Any) {
-        adminAccess()
     }
     
     @IBAction func logOut(_ sender: Any) {
@@ -71,40 +72,40 @@ class MenuController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @IBAction func addItemName(_ sender: Any) {
-        if txtAddItemName.text != nil {
+        if txtAddItemName.text != "" {
             lblDescription1.text = txtAddItemName.text
-            txtAddItemName.text = nil
+            txtAddItemName.text = ""
         }
     }
     
     @IBAction func addDescription(_ sender: Any) {
-        if txtAddDescription.text != nil {
+        if txtAddDescription.text != "" {
             lblDescription2.text = txtAddDescription.text
-            txtAddDescription.text = nil
+            txtAddDescription.text = ""
         }
         
     }
     
     @IBAction func addCondition(_ sender: Any) {
-        if txtCondition.text != nil {
+        if txtCondition.text != "" {
             lblDescription3.text = txtCondition.text
-            txtCondition.text = nil
+            txtCondition.text = ""
         }
     }
     
     @IBAction func addPrice(_ sender: Any) {
-        if txtPrice.text != nil {
-            if let numbers = Int(txtPrice.text!){
+        if txtPrice.text != "" {
+            if let numbers = Float(txtPrice.text!){
                 lblDescription4.text = String(numbers)
-                txtPrice.text = nil
+                txtPrice.text = ""
             }
         }
     }
     
     @IBAction func addExtra(_ sender: Any) {
-        if txtExtra.text != nil {
+        if txtExtra.text != "" {
             lblDescription5.text = txtExtra.text
-            txtExtra.text = nil
+            txtExtra.text = ""
         }
     }
     
