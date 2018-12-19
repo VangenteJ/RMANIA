@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 import FirebaseAuth
+import FirebaseStorage
 
 class MenuController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet weak var imageview1: UIImageView!
@@ -34,26 +35,16 @@ class MenuController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var lblDescription4: UILabel!
     @IBOutlet weak var lblDescription5: UILabel!
     
-    @IBOutlet weak var txtAddItemName: UITextField!
-    @IBOutlet weak var txtAddDescription: UITextField!
-    @IBOutlet weak var txtCondition: UITextField!
-    @IBOutlet weak var txtPrice: UITextField!
-    @IBOutlet weak var txtExtra: UITextField!
-    
-    @IBOutlet weak var btnItemName: UIButton!
-    @IBOutlet weak var btnDescription: UIButton!
-    @IBOutlet weak var btnCondition: UIButton!
-    @IBOutlet weak var btnPrice: UIButton!
-    @IBOutlet weak var btnExtra: UIButton!
-    
-    @IBOutlet weak var editStack: UIStackView!
-    
     var imageNun = 0
+    var ref:DatabaseReference!
+    var imge:DatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         imageNun = 0
         isImage()
+        ref = Database.database().reference()
+        imge = ref.child("Image")
         //isLogged()
         
 
@@ -71,49 +62,15 @@ class MenuController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
     
-    @IBAction func addItemName(_ sender: Any) {
-        if txtAddItemName.text != "" {
-            lblDescription1.text = txtAddItemName.text
-            txtAddItemName.text = ""
-        }
-    }
-    
-    @IBAction func addDescription(_ sender: Any) {
-        if txtAddDescription.text != "" {
-            lblDescription2.text = txtAddDescription.text
-            txtAddDescription.text = ""
-        }
-        
-    }
-    
-    @IBAction func addCondition(_ sender: Any) {
-        if txtCondition.text != "" {
-            lblDescription3.text = txtCondition.text
-            txtCondition.text = ""
-        }
-    }
-    
-    @IBAction func addPrice(_ sender: Any) {
-        if txtPrice.text != "" {
-            if let numbers = Float(txtPrice.text!){
-                lblDescription4.text = String(numbers)
-                txtPrice.text = ""
-            }
-        }
-    }
-    
-    @IBAction func addExtra(_ sender: Any) {
-        if txtExtra.text != "" {
-            lblDescription5.text = txtExtra.text
-            txtExtra.text = ""
-        }
-    }
-    
-    
     @IBAction func Winners(_ sender: Any) {
         let goTo_Winners = self.storyboard?.instantiateViewController(withIdentifier: "HistoricController") as! HistoricController
         self.present(goTo_Winners, animated: true, completion: nil)
     }
+    
+    @IBAction func adminPage(_ sender: Any) {
+        self.performSegue(withIdentifier: "adminpage", sender: self)
+    }
+    
     
     @IBAction func btnAddImage1(_ sender: Any) {
         imageNun = 1
@@ -146,6 +103,28 @@ class MenuController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         imageNun = 0
         picker.dismiss(animated: true, completion: nil)
+        
+        var data = Data()
+        data = image.jpegData(compressionQuality: 0.5)!
+        
+        let imageRef = Storage.storage().reference().child("Images/Number1")
+        
+        _ = imageRef.putData(data, metadata: nil) { (metadata, error) in
+            guard metadata != nil else {
+                // Uh-oh, an error occurred!
+                return
+            }
+            imageRef.downloadURL { url, error in
+                guard let downloadURL = url else {
+                    // Uh-oh, an error occurred!
+                    return
+                }
+                let images = ["URL": downloadURL.absoluteString]
+                
+                self.imge.setValue(images)
+            }
+        
+        }
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -195,20 +174,10 @@ class MenuController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func adminAccess(){
-        btnToImageView1.isHidden = true
+        btnToImageView1.isHidden = false
         btnToImageView2.isHidden = true
         btnToImageView3.isHidden = true
         btnImageView4.isHidden = true
-        txtAddItemName.isHidden = true
-        txtAddDescription.isHidden = true
-        txtCondition.isHidden = true
-        txtPrice.isHidden = true
-        txtExtra.isHidden = true
-        btnItemName.isHidden = true
-        btnDescription.isHidden = true
-        btnCondition.isHidden = true
-        btnPrice.isHidden = true
-        btnExtra.isHidden = true
     }
     
     func isLogged(){

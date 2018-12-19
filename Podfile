@@ -8,6 +8,7 @@ target 'RMania' do
 	pod 'Firebase/Core'
 	pod 'Firebase/Auth'
   	pod 'Firebase/Database'
+	pod 'Firebase/Storage'
   	pod 'PayPal-iOS-SDK'
 
 end
