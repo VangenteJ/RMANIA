@@ -49,15 +49,6 @@ class ViewController: UIViewController {
     
     @IBAction func noLogout(_ sender: Any) {
         try? Auth.auth().signOut()
-//        segLog_reg.isEnabled = true
-//        lblLog_Reg.isEnabled = true
-//        lblEmail.isEnabled = true
-//        lblPassword.isEnabled = true
-//        txtEmail.isEnabled = true
-//        txtPassword.isEnabled = true
-//        lblUser.isHidden = true
-//        stackYesNo.isHidden = true
-//        btnLog_Reg.isEnabled = true
         let login = self.storyboard?.instantiateViewController(withIdentifier: "ViewController") as! ViewController
         self.present(login, animated: true, completion: nil)
     }
@@ -131,4 +122,3 @@ class ViewController: UIViewController {
         self.present(goTo_Main, animated: true, completion: nil)
     }
 }
-

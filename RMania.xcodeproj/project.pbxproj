@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C1DF16521CC54C400CE013E /* JoinController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1DF16421CC54C400CE013E /* JoinController.swift */; };
+		0C1DF16721CC54DC00CE013E /* HelpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C1DF16621CC54DC00CE013E /* HelpController.swift */; };
 		0C6BD54C21AF4A7100048769 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6BD54B21AF4A7100048769 /* AppDelegate.swift */; };
 		0C6BD54E21AF4A7100048769 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6BD54D21AF4A7100048769 /* ViewController.swift */; };
 		0C6BD55121AF4A7100048769 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C6BD54F21AF4A7100048769 /* Main.storyboard */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C1DF16421CC54C400CE013E /* JoinController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinController.swift; sourceTree = "<group>"; };
+		0C1DF16621CC54DC00CE013E /* HelpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpController.swift; sourceTree = "<group>"; };
 		0C6BD54821AF4A7100048769 /* RMania.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RMania.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C6BD54B21AF4A7100048769 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0C6BD54D21AF4A7100048769 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +78,8 @@
 				0C6BD55F21B007ED00048769 /* MenuController.swift */,
 				0C6BD56121B0080500048769 /* HistoricController.swift */,
 				0CC412EF21C56589004D9C97 /* AdminController.swift */,
+				0C1DF16421CC54C400CE013E /* JoinController.swift */,
+				0C1DF16621CC54DC00CE013E /* HelpController.swift */,
 				0C6BD54F21AF4A7100048769 /* Main.storyboard */,
 				0C6BD55221AF4A7200048769 /* Assets.xcassets */,
 				0C6BD55421AF4A7200048769 /* LaunchScreen.storyboard */,
@@ -228,6 +234,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C6BD56221B0080500048769 /* HistoricController.swift in Sources */,
+				0C1DF16721CC54DC00CE013E /* HelpController.swift in Sources */,
+				0C1DF16521CC54C400CE013E /* JoinController.swift in Sources */,
 				0C6BD54E21AF4A7100048769 /* ViewController.swift in Sources */,
 				0C6BD56021B007ED00048769 /* MenuController.swift in Sources */,
 				0CC412F021C56589004D9C97 /* AdminController.swift in Sources */,

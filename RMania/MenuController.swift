@@ -18,30 +18,30 @@ class MenuController: UIViewController {
     @IBOutlet weak var imageview3: UIImageView!
     @IBOutlet weak var imageview4: UIImageView!
     
-    @IBOutlet weak var lblItemD1: UILabel!
-    @IBOutlet weak var lblItemD2: UIStackView!
-    @IBOutlet weak var lblItemD3: UILabel!
-    @IBOutlet weak var lblItemD4: UILabel!
-    @IBOutlet weak var lblItemD5: UILabel!
-    
     @IBOutlet weak var lblDescription1: UILabel!
     @IBOutlet weak var lblDescription2: UILabel!
     @IBOutlet weak var lblDescription3: UILabel!
     @IBOutlet weak var lblDescription4: UILabel!
     @IBOutlet weak var lblDescription5: UILabel!
     
+    @IBOutlet weak var lblParticipants: UILabel!
+    @IBOutlet weak var lblSalers: UILabel!
+    
+    var handle:DatabaseHandle?
     var ref:DatabaseReference!
-    var imge:DatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         ref = Database.database().reference()
-        imge = ref.child("Image")
         chechImages()
+        retrieveData()
+        showParticipants()
+        showSalers()
         
     }
     
     @IBAction func Pay_PayPal(_ sender: Any) {
+        self.performSegue(withIdentifier: "join", sender: self)
     }
     
     @IBAction func logOut(_ sender: Any) {
@@ -50,6 +50,9 @@ class MenuController: UIViewController {
             let log_regPage = self.storyboard?.instantiateViewController(withIdentifier: "ViewController") as! ViewController
             self.present(log_regPage, animated: true, completion: nil)
         }
+    }
+    @IBAction func goToHelp(_ sender: Any) {
+        self.performSegue(withIdentifier: "help", sender: self)
     }
     
     @IBAction func Winners(_ sender: Any) {
@@ -109,10 +112,96 @@ class MenuController: UIViewController {
         }
     }
     
+    func retrieveData(){
+        let descriptions = ref.child("Description Values")
+        handle = descriptions.child("Item").observe(.value, with: { (snapshot) in
+            if snapshot.value as? String != nil{
+                let value = snapshot.value as? String
+                self.lblDescription1.text = value
+            }
+        })
+        
+        handle = descriptions.child("Description").observe(.value, with: { (snapshot) in
+            if snapshot.value as? String != nil{
+                let value = snapshot.value as? String
+                self.lblDescription2.text = value
+            }
+        })
+        
+        handle = descriptions.child("Condition").observe(.value, with: { (snapshot) in
+            if snapshot.value as? String != nil{
+                let value = snapshot.value as? String
+                self.lblDescription3.text = value
+            }
+        })
+        
+        handle = descriptions.child("Price").observe(.value, with: { (snapshot) in
+            if snapshot.value as? String != nil{
+                let value = snapshot.value as? String
+                self.lblDescription4.text = value
+            }
+        })
+        
+        handle = descriptions.child("Extra").observe(.value, with: { (snapshot) in
+            if snapshot.value as? String != nil{
+                let value = snapshot.value as? String
+                self.lblDescription5.text = value
+            }
+        })
+    }
+    
     func isLogged(){
         if Auth.auth().currentUser == nil{
             let log_regPage = self.storyboard?.instantiateViewController(withIdentifier: "ViewController") as! ViewController
             self.present(log_regPage, animated: true, completion: nil)
+        }
+    }
+    
+    func showParticipants(){
+        var names = [String]()
+        var new = "Joined:"
+        var loopNum = 0
+        let descriptions = ref.child("Participants")
+        descriptions.observe(.value) { (snapshot) in
+            for child in snapshot.children.allObjects as![DataSnapshot]{
+                if loopNum == 1 {
+                    names = []
+                    new = "Joined:"
+                }
+                loopNum = 0
+                let descrip = child.value as? [String: AnyObject]
+                let name = descrip?["Name"]
+                names.append(name as! String)
+            }
+            for name in names{
+                new = new + " \(name);"
+                loopNum = 1
+            }
+            self.lblParticipants.text = new
+        }
+    }
+    
+    func showSalers(){
+        var names = [String]()
+        var new = "Who sold:"
+        var loopNum = 0
+        let descriptions = ref.child("Salers")
+        descriptions.observe(.value) { (snapshot) in
+            for child in snapshot.children.allObjects as![DataSnapshot]{
+                if loopNum == 1 {
+                    names = []
+                    new = "Who sold:"
+                }
+                loopNum = 0
+                let descrip = child.value as? [String: AnyObject]
+                let name = descrip?["Name"]
+                names.append(name as! String)
+            }
+            for name in names{
+                new = new + " \(name);"
+                loopNum = 1
+            }
+            self.lblSalers.text = new
         }
     }
 
