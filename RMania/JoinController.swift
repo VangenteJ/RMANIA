@@ -92,6 +92,7 @@ class JoinController: UIViewController {
     
     @IBAction func payment(_ sender: Any) {
         add_entry_to_db()
+        add_seler_to_DB()
     }
     
     @IBAction func cancellation(_ sender: Any) {
@@ -100,40 +101,54 @@ class JoinController: UIViewController {
     }
     
     func add_entry_to_db(){
-        let descriptions = ref.child("Participants").child((user?.uid)!)
-        if txtEntry1.text != ""{
-            let token = ((user?.uid)!)
-            let name_token = txtEntry1.text! + "_" + String(token.suffix(6))
-            descriptions.child("Entry1").setValue(name_token)
-        }
-        if txtEntry2.text != ""{
-            let token = ((user?.uid)!)
-            let name_token = txtEntry2.text! + "_" + String(token.suffix(6))
-            descriptions.child("Entry2").setValue(name_token)
-        }
-        if txtEntry3.text != ""{
-            let token = ((user?.uid)!)
-            let name_token = txtEntry3.text! + "_" + String(token.suffix(6))
-            descriptions.child("Entry3").setValue(name_token)
-        }
-        if txtEntry4.text != ""{
-            let token = ((user?.uid)!)
-            let name_token = txtEntry4.text! + "_" + String(token.suffix(6))
-            descriptions.child("Entry4").setValue(name_token)
-        }
-        if txtEntry5.text != ""{
-            let token = ((user?.uid)!)
-            let name_token = txtEntry5.text! + "_" + String(token.suffix(6))
-            descriptions.child("Entry5").setValue(name_token)
-        }
+        let item = ref.child("Description Values")
+        handle = item.child("Item").observe(.value, with: { (snapshot) in
+            if snapshot.value as? String != nil{
+                let value = snapshot.value as? String
+                
+                let descriptions = self.ref.child(value!).child("Participants").child((self.user?.uid)!)
+                if self.txtEntry1.text != ""{
+                    let token = ((self.user?.uid)!)
+                    let name_token = self.txtEntry1.text! + "_" + String(token.suffix(6))
+                    descriptions.child("Entry1").setValue(name_token)
+                }
+                if self.txtEntry2.text != ""{
+                    let token = ((self.user?.uid)!)
+                    let name_token = self.txtEntry2.text! + "_" + String(token.suffix(6))
+                    descriptions.child("Entry2").setValue(name_token)
+                }
+                if self.txtEntry3.text != ""{
+                    let token = ((self.user?.uid)!)
+                    let name_token = self.txtEntry3.text! + "_" + String(token.suffix(6))
+                    descriptions.child("Entry3").setValue(name_token)
+                }
+                if self.txtEntry4.text != ""{
+                    let token = ((self.user?.uid)!)
+                    let name_token = self.txtEntry4.text! + "_" + String(token.suffix(6))
+                    descriptions.child("Entry4").setValue(name_token)
+                }
+                if self.txtEntry5.text != ""{
+                    let token = ((self.user?.uid)!)
+                    let name_token = self.txtEntry5.text! + "_" + String(token.suffix(6))
+                    descriptions.child("Entry5").setValue(name_token)
+                }
+            }
+        })
+        
     }
     
     func add_seler_to_DB(){
-        let descriptions = ref.child("Salers").child((user?.uid)!)
-        if txtSelerName_Token.text != ""{
-            descriptions.child("Name").setValue(txtSelerName_Token.text)
-        }
-        
+        let item = ref.child("Description Values")
+        handle = item.child("Item").observe(.value, with: { (snapshot) in
+            if snapshot.value as? String != nil{
+                let value = snapshot.value as? String
+                
+                let descriptions = self.ref.child(value!).child("Salers").child((self.user?.uid)!)
+                if self.txtSelerName_Token.text != ""{
+                    descriptions.child("Name").setValue(self.txtSelerName_Token.text)
+                }
+            }
+        })
     }
     
     func getPrice_From_DB(){

@@ -158,77 +158,95 @@ class MenuController: UIViewController {
     }
     
     func showParticipants(){
-        var names = [String]()
-        var new = "Joined:"
-        var loopNum = 0
-        let descriptions = ref.child("Participants")
-        descriptions.observe(.value) { (snapshot) in
-            for child in snapshot.children.allObjects as![DataSnapshot]{
-                if loopNum == 1 {
-                    names = []
-                    new = "Joined:"
+        let item = ref.child("Description Values")
+        handle = item.child("Item").observe(.value, with: { (snapshot) in
+            if snapshot.value as? String != nil{
+                let value = snapshot.value as? String
+                
+                var names = [String]()
+                var new = "Joined:"
+                var loopNum = 0
+                let descriptions = self.ref.child(value!).child("Participants")
+                descriptions.observe(.value) { (snapshot) in
+                    for child in snapshot.children.allObjects as![DataSnapshot]{
+                        if loopNum == 1 {
+                            names = []
+                            new = "Joined:"
+                        }
+                        loopNum = 0
+                        let descrip = child.value as? [String: AnyObject]
+                        let entry1 = descrip?["Entry1"]
+                        let entry2 = descrip?["Entry2"]
+                        let entry3 = descrip?["Entry3"]
+                        let entry4 = descrip?["Entry4"]
+                        let entry5 = descrip?["Entry5"]
+                        if entry1 != nil && entry2 == nil{
+                            names.append(entry1 as! String)
+                        }else if entry2 != nil && entry3 == nil{
+                            names.append(entry1 as! String)
+                            names.append(entry2 as! String)
+                        }else if entry3 != nil && entry4 == nil{
+                            names.append(entry1 as! String)
+                            names.append(entry2 as! String)
+                            names.append(entry3 as! String)
+                        }else if entry4 != nil && entry5 == nil{
+                            names.append(entry1 as! String)
+                            names.append(entry2 as! String)
+                            names.append(entry3 as! String)
+                            names.append(entry4 as! String)
+                        }else if entry5 != nil{
+                            names.append(entry1 as! String)
+                            names.append(entry2 as! String)
+                            names.append(entry3 as! String)
+                            names.append(entry4 as! String)
+                            names.append(entry5 as! String)
+                        }
+                    }
+                    for name in names{
+                        new = new + " \(name);"
+                        loopNum = 1
+                    }
+                    self.lblParticipants.text = new
                 }
-                loopNum = 0
-                let descrip = child.value as? [String: AnyObject]
-                let entry1 = descrip?["Entry1"]
-                let entry2 = descrip?["Entry2"]
-                let entry3 = descrip?["Entry3"]
-                let entry4 = descrip?["Entry4"]
-                let entry5 = descrip?["Entry5"]
-                if entry1 != nil && entry2 == nil{
-                    names.append(entry1 as! String)
-                }else if entry2 != nil && entry3 == nil{
-                    names.append(entry1 as! String)
-                    names.append(entry2 as! String)
-                }else if entry3 != nil && entry4 == nil{
-                    names.append(entry1 as! String)
-                    names.append(entry2 as! String)
-                    names.append(entry3 as! String)
-                }else if entry4 != nil && entry5 == nil{
-                    names.append(entry1 as! String)
-                    names.append(entry2 as! String)
-                    names.append(entry3 as! String)
-                    names.append(entry4 as! String)
-                }else if entry5 != nil{
-                    names.append(entry1 as! String)
-                    names.append(entry2 as! String)
-                    names.append(entry3 as! String)
-                    names.append(entry4 as! String)
-                    names.append(entry5 as! String)
-                }
+                
             }
-            for name in names{
-                new = new + " \(name);"
-                loopNum = 1
-            }
-            self.lblParticipants.text = new
-        }
+        })
+        
     }
     
     func showSalers(){
-        var names = [String]()
-        var new = "Who sold:"
-        var loopNum = 0
-        let descriptions = ref.child("Salers")
-        descriptions.observe(.value) { (snapshot) in
-            for child in snapshot.children.allObjects as![DataSnapshot]{
-                if loopNum == 1 {
-                    names = []
-                    new = "Who sold:"
-                }
-                loopNum = 0
-                let descrip = child.value as? [String: AnyObject]
-                let name = descrip?["Name"]
-                if name != nil{
-                    names.append(name as! String)
+        
+        let item = ref.child("Description Values")
+        handle = item.child("Item").observe(.value, with: { (snapshot) in
+            if snapshot.value as? String != nil{
+                let value = snapshot.value as? String
+                
+                var names = [String]()
+                var new = "Who sold:"
+                var loopNum = 0
+                let descriptions = self.ref.child(value!).child("Salers")
+                descriptions.observe(.value) { (snapshot) in
+                    for child in snapshot.children.allObjects as![DataSnapshot]{
+                        if loopNum == 1 {
+                            names = []
+                            new = "Who sold:"
+                        }
+                        loopNum = 0
+                        let descrip = child.value as? [String: AnyObject]
+                        let name = descrip?["Name"]
+                        if name != nil{
+                            names.append(name as! String)
+                        }
+                    }
+                    for name in names{
+                        new = new + " \(name);"
+                        loopNum = 1
+                    }
+                    self.lblSalers.text = new
                 }
             }
-            for name in names{
-                new = new + " \(name);"
-                loopNum = 1
-            }
-            self.lblSalers.text = new
-        }
+        })
+        
     }
 
 }

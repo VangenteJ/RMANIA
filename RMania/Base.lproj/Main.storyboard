@@ -688,13 +688,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="941"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TXN-O5-E3w">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="971"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="964"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="216" translatesAutoresizingMaskIntoConstraints="NO" id="9Nn-d9-jwn" userLabel="Stack">
-                                                <rect key="frame" x="5" y="25" width="365" height="946"/>
+                                                <rect key="frame" x="5" y="25" width="365" height="939"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="31" translatesAutoresizingMaskIntoConstraints="NO" id="vYE-zX-EcB">
-                                                        <rect key="frame" x="0.0" y="0.0" width="365" height="946"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="365" height="939"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="PrK-Ln-jqG">
                                                                 <rect key="frame" x="0.0" y="0.0" width="365" height="166"/>
@@ -835,16 +835,28 @@
                                                                 </subviews>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="Lmf-vR-xMz">
-                                                                <rect key="frame" x="0.0" y="687" width="365" height="47"/>
+                                                                <rect key="frame" x="0.0" y="687" width="365" height="100"/>
                                                                 <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SZC-Um-pa3">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="42" height="20.5"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BUg-Ey-nXM">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="36.5" height="20.5"/>
+                                                                        <rect key="frame" x="0.0" y="26.5" width="36.5" height="20.5"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Gw-eR-oZs">
+                                                                        <rect key="frame" x="0.0" y="53" width="42" height="20.5"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Wq-jr-OYw">
-                                                                        <rect key="frame" x="0.0" y="26.5" width="36.5" height="20.5"/>
+                                                                        <rect key="frame" x="0.0" y="79.5" width="36.5" height="20.5"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -852,34 +864,37 @@
                                                                 </subviews>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="e9Z-a3-aJj">
-                                                                <rect key="frame" x="0.0" y="765" width="365" height="120"/>
+                                                                <rect key="frame" x="0.0" y="818" width="365" height="60"/>
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sM3-0D-dO9">
-                                                                        <rect key="frame" x="335" y="0.0" width="30" height="30"/>
-                                                                        <state key="normal" title="Join"/>
-                                                                        <connections>
-                                                                            <action selector="Pay_PayPal:" destination="wi5-Wr-SvA" eventType="touchUpInside" id="4Ah-MV-BKU"/>
-                                                                            <segue destination="93J-27-96g" kind="show" identifier="join" id="yZh-Ud-h3w"/>
-                                                                        </connections>
-                                                                    </button>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wz3-qB-4FW">
-                                                                        <rect key="frame" x="246" y="30" width="119" height="30"/>
-                                                                        <state key="normal" title="Previous Winners"/>
-                                                                        <connections>
-                                                                            <action selector="Winners:" destination="wi5-Wr-SvA" eventType="touchUpInside" id="5ac-jN-OYL"/>
-                                                                        </connections>
-                                                                    </button>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pxc-uZ-kun">
-                                                                        <rect key="frame" x="247" y="60" width="118" height="30"/>
-                                                                        <state key="normal" title="Help/Instructions"/>
-                                                                        <connections>
-                                                                            <action selector="Pay_PayPal:" destination="wi5-Wr-SvA" eventType="touchUpInside" id="yYU-ab-1J8"/>
-                                                                            <action selector="goToHelp:" destination="wi5-Wr-SvA" eventType="touchUpInside" id="n1g-Ku-AWG"/>
-                                                                            <segue destination="NZD-9S-0rh" kind="show" identifier="help" id="RaI-wj-cpX"/>
-                                                                        </connections>
-                                                                    </button>
+                                                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="bottom" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="vK1-wA-P8O">
+                                                                        <rect key="frame" x="225" y="0.0" width="140" height="30"/>
+                                                                        <subviews>
+                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sM3-0D-dO9">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                                                                <state key="normal" title="Join"/>
+                                                                                <connections>
+                                                                                    <action selector="Pay_PayPal:" destination="wi5-Wr-SvA" eventType="touchUpInside" id="4Ah-MV-BKU"/>
+                                                                                    <segue destination="93J-27-96g" kind="show" identifier="join" id="yZh-Ud-h3w"/>
+                                                                                </connections>
+                                                                            </button>
+                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wz3-qB-4FW">
+                                                                                <rect key="frame" x="40" y="0.0" width="68" height="30"/>
+                                                                                <state key="normal" title="W/History"/>
+                                                                                <connections>
+                                                                                    <action selector="Winners:" destination="wi5-Wr-SvA" eventType="touchUpInside" id="5ac-jN-OYL"/>
+                                                                                </connections>
+                                                                            </button>
+                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pxc-uZ-kun">
+                                                                                <rect key="frame" x="118" y="8" width="22" height="22"/>
+                                                                                <connections>
+                                                                                    <action selector="goToHelp:" destination="wi5-Wr-SvA" eventType="touchUpInside" id="n1g-Ku-AWG"/>
+                                                                                    <segue destination="NZD-9S-0rh" kind="show" identifier="help" id="RaI-wj-cpX"/>
+                                                                                </connections>
+                                                                            </button>
+                                                                        </subviews>
+                                                                    </stackView>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NmB-65-5zT">
-                                                                        <rect key="frame" x="321" y="90" width="44" height="30"/>
+                                                                        <rect key="frame" x="321" y="30" width="44" height="30"/>
                                                                         <state key="normal" title="Admin"/>
                                                                         <connections>
                                                                             <action selector="adminPage:" destination="wi5-Wr-SvA" eventType="touchUpInside" id="JKS-LM-82I"/>
@@ -889,7 +904,7 @@
                                                                 </subviews>
                                                             </stackView>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Aju-me-BBs">
-                                                                <rect key="frame" x="0.0" y="916" width="365" height="30"/>
+                                                                <rect key="frame" x="0.0" y="909" width="365" height="30"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Bg-Je-0aj">
                                                                         <rect key="frame" x="0.0" y="0.0" width="55" height="30"/>
