@@ -79,7 +79,7 @@ class AdminController: UIViewController, UIImagePickerControllerDelegate, UINavi
                 lblPrice.textColor = UIColor.black
                 lblPrice.text = "£\(String(numbers))"
                 descriptions.child("Price").setValue(lblPrice.text)
-                descriptions.child("PricePayPal").setValue(String(numbers))
+                descriptions.child("PricePayPal").setValue(numbers)
                 txtAddInfo.text = ""
                 
             }else {

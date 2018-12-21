@@ -170,8 +170,32 @@ class MenuController: UIViewController {
                 }
                 loopNum = 0
                 let descrip = child.value as? [String: AnyObject]
-                let name = descrip?["Name"]
-                names.append(name as! String)
+                let entry1 = descrip?["Entry1"]
+                let entry2 = descrip?["Entry2"]
+                let entry3 = descrip?["Entry3"]
+                let entry4 = descrip?["Entry4"]
+                let entry5 = descrip?["Entry5"]
+                if entry1 != nil && entry2 == nil{
+                    names.append(entry1 as! String)
+                }else if entry2 != nil && entry3 == nil{
+                    names.append(entry1 as! String)
+                    names.append(entry2 as! String)
+                }else if entry3 != nil && entry4 == nil{
+                    names.append(entry1 as! String)
+                    names.append(entry2 as! String)
+                    names.append(entry3 as! String)
+                }else if entry4 != nil && entry5 == nil{
+                    names.append(entry1 as! String)
+                    names.append(entry2 as! String)
+                    names.append(entry3 as! String)
+                    names.append(entry4 as! String)
+                }else if entry5 != nil{
+                    names.append(entry1 as! String)
+                    names.append(entry2 as! String)
+                    names.append(entry3 as! String)
+                    names.append(entry4 as! String)
+                    names.append(entry5 as! String)
+                }
             }
             for name in names{
                 new = new + " \(name);"
@@ -195,7 +219,9 @@ class MenuController: UIViewController {
                 loopNum = 0
                 let descrip = child.value as? [String: AnyObject]
                 let name = descrip?["Name"]
-                names.append(name as! String)
+                if name != nil{
+                    names.append(name as! String)
+                }
             }
             for name in names{
                 new = new + " \(name);"
