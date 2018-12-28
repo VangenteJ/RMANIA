@@ -27,6 +27,8 @@ class JoinController: UIViewController {
     
     @IBOutlet weak var txtSelerName_Token: UITextField!
     
+    @IBOutlet weak var btnpay: UIButton!
+    
     var stack_control = 1
     
     var handle:DatabaseHandle?
@@ -38,6 +40,7 @@ class JoinController: UIViewController {
         super.viewDidLoad()
         ref = Database.database().reference()
         getPrice_From_DB()
+        checkEntries()
 
     }
     
@@ -68,18 +71,30 @@ class JoinController: UIViewController {
     @IBAction func removeEntry(_ sender: Any) {
         if stack_control >= 2{
             if stack_control == 5{
+                if txtEntry5.isEnabled{
+                   txtEntry5.text = nil
+                }
                 stackEntry5.isHidden = true
                 getPrice_From_DB()
             }else if stack_control == 4{
+                if txtEntry4.isEnabled{
+                    txtEntry4.text = nil
+                }
                 stackEntry4.isHidden = true
                 stackEntry5.isHidden = true
                 getPrice_From_DB()
             }else if stack_control == 3{
+                if txtEntry3.isEnabled{
+                    txtEntry3.text = nil
+                }
                 stackEntry3.isHidden = true
                 stackEntry4.isHidden = true
                 stackEntry5.isHidden = true
                 getPrice_From_DB()
             }else if stack_control == 2{
+                if txtEntry2.isEnabled{
+                    txtEntry2.text = nil
+                }
                 stackEntry2.isHidden = true
                 stackEntry3.isHidden = true
                 stackEntry4.isHidden = true
@@ -109,28 +124,39 @@ class JoinController: UIViewController {
                 let descriptions = self.ref.child(value!).child("Participants").child((self.user?.uid)!)
                 if self.txtEntry1.text != ""{
                     let token = ((self.user?.uid)!)
-                    let name_token = self.txtEntry1.text! + "_" + String(token.suffix(6))
-                    descriptions.child("Entry1").setValue(name_token)
+                    if self.txtEntry1.isEnabled{
+                        let name_token = self.txtEntry1.text! + "_" + String(token.suffix(6))
+                        descriptions.child("Entry1").setValue(name_token)
+                    }
+                    
                 }
                 if self.txtEntry2.text != ""{
                     let token = ((self.user?.uid)!)
-                    let name_token = self.txtEntry2.text! + "_" + String(token.suffix(6))
-                    descriptions.child("Entry2").setValue(name_token)
+                    if self.txtEntry2.isEnabled{
+                        let name_token = self.txtEntry2.text! + "_" + String(token.suffix(6))
+                        descriptions.child("Entry2").setValue(name_token)
+                    }
                 }
                 if self.txtEntry3.text != ""{
                     let token = ((self.user?.uid)!)
-                    let name_token = self.txtEntry3.text! + "_" + String(token.suffix(6))
-                    descriptions.child("Entry3").setValue(name_token)
+                    if self.txtEntry3.isEnabled{
+                        let name_token = self.txtEntry3.text! + "_" + String(token.suffix(6))
+                        descriptions.child("Entry3").setValue(name_token)
+                    }
                 }
                 if self.txtEntry4.text != ""{
                     let token = ((self.user?.uid)!)
-                    let name_token = self.txtEntry4.text! + "_" + String(token.suffix(6))
-                    descriptions.child("Entry4").setValue(name_token)
+                    if self.txtEntry4.isEnabled{
+                        let name_token = self.txtEntry4.text! + "_" + String(token.suffix(6))
+                        descriptions.child("Entry4").setValue(name_token)
+                    }
                 }
                 if self.txtEntry5.text != ""{
                     let token = ((self.user?.uid)!)
-                    let name_token = self.txtEntry5.text! + "_" + String(token.suffix(6))
-                    descriptions.child("Entry5").setValue(name_token)
+                    if self.txtEntry5.isEnabled{
+                        let name_token = self.txtEntry5.text! + "_" + String(token.suffix(6))
+                        descriptions.child("Entry5").setValue(name_token)
+                    }
                 }
             }
         })
@@ -144,8 +170,10 @@ class JoinController: UIViewController {
                 let value = snapshot.value as? String
                 
                 let descriptions = self.ref.child(value!).child("Salers").child((self.user?.uid)!)
-                if self.txtSelerName_Token.text != ""{
-                    descriptions.child("Name").setValue(self.txtSelerName_Token.text)
+                if self.txtSelerName_Token.isEnabled{
+                    if self.txtSelerName_Token.text != ""{
+                        descriptions.child("Name").setValue(self.txtSelerName_Token.text)
+                    }
                 }
             }
         })
@@ -159,21 +187,190 @@ class JoinController: UIViewController {
                 
                 var total = (Float(truncating: value))
                 if self.stack_control == 5{
-                    total = total * 5
-                    self.lblPrice.text = (String(format: "%.2f", total))
+                    if !self.txtEntry1.isEnabled && !self.txtEntry2.isEnabled && !self.txtEntry3.isEnabled && !self.txtEntry4.isEnabled && !self.txtEntry5.isEnabled{
+                        
+                        self.lblPrice.text = "0"
+                        self.btnpay.isEnabled = false
+                    }else if !self.txtEntry1.isEnabled && !self.txtEntry2.isEnabled && !self.txtEntry3.isEnabled && !self.txtEntry4.isEnabled && self.txtEntry5.isEnabled{
+                        
+                        self.btnpay.isEnabled = true
+                        self.lblPrice.text = (String(format: "%.2f", total))
+                    }else if !self.txtEntry1.isEnabled && !self.txtEntry2.isEnabled && !self.txtEntry3.isEnabled && self.txtEntry4.isEnabled && self.txtEntry5.isEnabled{
+                        
+                        self.btnpay.isEnabled = true
+                        total = total * 2
+                        self.lblPrice.text = (String(format: "%.2f", total))
+                    }else if !self.txtEntry1.isEnabled && !self.txtEntry2.isEnabled && self.txtEntry3.isEnabled && self.txtEntry4.isEnabled && self.txtEntry5.isEnabled{
+                        
+                        self.btnpay.isEnabled = true
+                        total = total * 3
+                        self.lblPrice.text = (String(format: "%.2f", total))
+                    }else if !self.txtEntry1.isEnabled && self.txtEntry2.isEnabled && self.txtEntry3.isEnabled && self.txtEntry4.isEnabled && self.txtEntry5.isEnabled{
+                        
+                        self.btnpay.isEnabled = true
+                        total = total * 4
+                        self.lblPrice.text = (String(format: "%.2f", total))
+                    }else if self.txtEntry1.isEnabled && self.txtEntry2.isEnabled && self.txtEntry3.isEnabled && self.txtEntry4.isEnabled && self.txtEntry5.isEnabled{
+                        
+                        self.btnpay.isEnabled = true
+                        total = total * 5
+                        self.lblPrice.text = (String(format: "%.2f", total))
+                    }
+                    
                 }else if self.stack_control == 4{
-                    total = total * 4
-                    self.lblPrice.text = (String(format: "%.2f", total))
+                    if !self.txtEntry1.isEnabled && !self.txtEntry2.isEnabled && !self.txtEntry3.isEnabled && !self.txtEntry4.isEnabled{
+                        
+                        self.lblPrice.text = "0"
+                        self.btnpay.isEnabled = false
+                    }else if !self.txtEntry1.isEnabled && !self.txtEntry2.isEnabled && !self.txtEntry3.isEnabled && self.txtEntry4.isEnabled{
+                        
+                        self.btnpay.isEnabled = true
+                        self.lblPrice.text = (String(format: "%.2f", total))
+                    }else if !self.txtEntry1.isEnabled && !self.txtEntry2.isEnabled && self.txtEntry3.isEnabled && self.txtEntry4.isEnabled{
+                        
+                        self.btnpay.isEnabled = true
+                        total = total * 2
+                        self.lblPrice.text = (String(format: "%.2f", total))
+                    }else if !self.txtEntry1.isEnabled && self.txtEntry2.isEnabled && self.txtEntry3.isEnabled && self.txtEntry4.isEnabled{
+                        
+                        self.btnpay.isEnabled = true
+                        total = total * 3
+                        self.lblPrice.text = (String(format: "%.2f", total))
+                    }else{
+                        
+                        self.btnpay.isEnabled = true
+                        total = total * 4
+                        self.lblPrice.text = (String(format: "%.2f", total))
+                    }
+                    
                 }else if self.stack_control == 3{
-                    total = total * 3
-                    self.lblPrice.text = (String(format: "%.2f", total))
+                    if !self.txtEntry1.isEnabled && !self.txtEntry2.isEnabled && !self.txtEntry3.isEnabled{
+                        
+                        self.lblPrice.text = "0"
+                        self.btnpay.isEnabled = false
+                    }else if !self.txtEntry1.isEnabled && !self.txtEntry2.isEnabled && self.txtEntry3.isEnabled{
+                        
+                        self.btnpay.isEnabled = true
+                        self.lblPrice.text = (String(format: "%.2f", total))
+                    }else if !self.txtEntry1.isEnabled && self.txtEntry2.isEnabled && self.txtEntry3.isEnabled{
+                        
+                        self.btnpay.isEnabled = true
+                        total = total * 2
+                        self.lblPrice.text = (String(format: "%.2f", total))
+                    }else{
+                        
+                        self.btnpay.isEnabled = true
+                        total = total * 3
+                        self.lblPrice.text = (String(format: "%.2f", total))
+                    }
+                    
                 }else if self.stack_control == 2{
-                    total = total * 2
-                    self.lblPrice.text = (String(format: "%.2f", total))
+                    
+                    if !self.txtEntry1.isEnabled && !self.txtEntry2.isEnabled{
+                        self.lblPrice.text = "0"
+                        self.btnpay.isEnabled = false
+                    }else if !self.txtEntry1.isEnabled && self.txtEntry2.isEnabled{
+                        
+                        self.btnpay.isEnabled = true
+                        self.lblPrice.text = (String(format: "%.2f", total))
+                    }else{
+                        
+                        self.btnpay.isEnabled = true
+                        total = total * 2
+                        self.lblPrice.text = (String(format: "%.2f", total))
+                    }
+                    
                 }else if self.stack_control == 1{
-                    total = total * 1
-                    self.lblPrice.text = (String(format: "%.2f", total))
+                    
+                    if !self.txtEntry1.isEnabled{
+                        self.lblPrice.text = "0"
+                        self.btnpay.isEnabled = false
+                    }else{
+                        
+                        self.btnpay.isEnabled = true
+                        total = total * 1
+                        self.lblPrice.text = (String(format: "%.2f", total))
+                    }
+                    
                 }
+            }
+        })
+    }
+    
+    func checkEntries(){
+        let item = ref.child("Description Values")
+        handle = item.child("Item").observe(.value, with: { (snapshot) in
+            if snapshot.value as? String != nil{
+                let value = snapshot.value as? String
+                
+                let descriptions = self.ref.child(value!).child("Participants").child((self.user?.uid)!)
+                let seler = self.ref.child(value!).child("Salers").child((self.user?.uid)!)
+                
+                self.handle = descriptions.child("Entry1").observe(.value, with: { (snapshot) in
+                    if snapshot.value as? String != nil{
+                        let value = snapshot.value as? String
+                        
+                        if value != ""{
+                            self.txtEntry1.text = value
+                            self.txtEntry1.isEnabled = false
+                        }
+                    }
+                })
+                
+                self.handle = descriptions.child("Entry2").observe(.value, with: { (snapshot) in
+                    if snapshot.value as? String != nil{
+                        let value = snapshot.value as? String
+                        
+                        if value != ""{
+                            self.txtEntry2.text = value
+                            self.txtEntry2.isEnabled = false
+                        }
+                    }
+                })
+                
+                self.handle = descriptions.child("Entry3").observe(.value, with: { (snapshot) in
+                    if snapshot.value as? String != nil{
+                        let value = snapshot.value as? String
+                        
+                        if value != ""{
+                            self.txtEntry3.text = value
+                            self.txtEntry3.isEnabled = false
+                        }
+                    }
+                })
+                
+                self.handle = descriptions.child("Entry4").observe(.value, with: { (snapshot) in
+                    if snapshot.value as? String != nil{
+                        let value = snapshot.value as? String
+                        
+                        if value != ""{
+                            self.txtEntry4.text = value
+                            self.txtEntry4.isEnabled = false
+                        }
+                    }
+                })
+                
+                self.handle = descriptions.child("Entry5").observe(.value, with: { (snapshot) in
+                    if snapshot.value as? String != nil{
+                        let value = snapshot.value as? String
+                        
+                        if value != ""{
+                            self.txtEntry5.text = value
+                            self.txtEntry5.isEnabled = false
+                        }
+                    }
+                })
+                
+                self.handle = seler.child("Name").observe(.value, with: { (snapshot) in
+                    if snapshot.value as? String != nil{
+                        let value = snapshot.value as? String
+                        
+                        if value != ""{
+                            self.txtSelerName_Token.text = value
+                            self.txtSelerName_Token.isEnabled = false
+                        }
+                    }
+                })
             }
         })
     }

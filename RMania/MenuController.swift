@@ -27,6 +27,9 @@ class MenuController: UIViewController {
     @IBOutlet weak var lblParticipants: UILabel!
     @IBOutlet weak var lblSalers: UILabel!
     
+    @IBOutlet weak var lblno_participants: UILabel!
+    @IBOutlet weak var lblno_selers: UILabel!
+    
     var handle:DatabaseHandle?
     var ref:DatabaseReference!
     
@@ -207,6 +210,7 @@ class MenuController: UIViewController {
                         loopNum = 1
                     }
                     self.lblParticipants.text = new
+                    self.lblno_participants.text = "\(names.count) Participant/s!"
                 }
                 
             }
@@ -243,6 +247,7 @@ class MenuController: UIViewController {
                         loopNum = 1
                     }
                     self.lblSalers.text = new
+                    self.lblno_selers.text = "\(names.count) Seler/s!"
                 }
             }
         })

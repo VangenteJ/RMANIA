@@ -70,8 +70,8 @@ class HistoricController: UIViewController, UIImagePickerControllerDelegate, UIN
     override func viewDidLoad() {
         super.viewDidLoad()
         isImage()
-        is_admin()
-        checkContent()
+        //is_admin()
+        //checkContent()
 
         // Do any additional setup after loading the view.
     }
