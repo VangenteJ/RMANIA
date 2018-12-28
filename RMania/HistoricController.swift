@@ -61,22 +61,16 @@ class HistoricController: UIViewController, UIImagePickerControllerDelegate, UIN
     @IBOutlet weak var btnAddDes7: UIButton!
     @IBOutlet weak var btnAddDes8: UIButton!
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    var handle:DatabaseHandle?
+    var ref:DatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        isImage()
+        ref = Database.database().reference()
         admin_status()
         checkContent()
-
+        chechImages()
+        check_db_for_previous_winners()
     }
     
 
@@ -86,50 +80,61 @@ class HistoricController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     @IBAction func addDes1(_ sender: Any) {
-        is_admin()
         if txtDes1.text != ""{
-           lblDes1.text = txtDes1.text
-            txtDes1.isHidden = true
-            btnAddDes1.isHidden = true
-            btnAdd1.isHidden = true
-        }else{
+            lblDes1.text = txtDes1.text
+            let previous_w = ref.child("Winners").child("Winner1")
+            previous_w.setValue(txtDes1.text)
             
         }
         
     }
     @IBAction func addDes2(_ sender: Any) {
-        if txtDes2.text != nil{
+        if txtDes2.text != ""{
             lblDes2.text = txtDes2.text
+            let previous_w = ref.child("Winners").child("Winner2")
+            previous_w.setValue(txtDes2.text)
         }
     }
     @IBAction func addDes3(_ sender: Any) {
-        if txtDes3.text != nil{
+        if txtDes3.text != ""{
             lblDes3.text = txtDes3.text
+            let previous_w = ref.child("Winners").child("Winner3")
+            previous_w.setValue(txtDes3.text)
         }
     }
     @IBAction func addDes4(_ sender: Any) {
-        if txtDes4.text != nil{
+        if txtDes4.text != ""{
             lblDes4.text = txtDes4.text
+            let previous_w = ref.child("Winners").child("Winner4")
+            previous_w.setValue(txtDes4.text)
         }
     }
     @IBAction func addDes5(_ sender: Any) {
-        if txtDes5.text != nil{
+        if txtDes5.text != ""{
             lblDes5.text = txtDes5.text
+            let previous_w = ref.child("Winners").child("Winner5")
+            previous_w.setValue(txtDes5.text)
         }
     }
     @IBAction func addDes6(_ sender: Any) {
-        if txtDes6.text != nil{
+        if txtDes6.text != ""{
             lblDes6.text = txtDes6.text
+            let previous_w = ref.child("Winners").child("Winner6")
+            previous_w.setValue(txtDes6.text)
         }
     }
     @IBAction func addDes7(_ sender: Any) {
-        if txtDes7.text != nil{
+        if txtDes7.text != ""{
             lblDes7.text = txtDes7.text
+            let previous_w = ref.child("Winners").child("Winner7")
+            previous_w.setValue(txtDes7.text)
         }
     }
     @IBAction func addDes8(_ sender: Any) {
-        if txtDes8.text != nil{
+        if txtDes8.text != ""{
             lblDes8.text = txtDes8.text
+            let previous_w = ref.child("Winners").child("Winner8")
+            previous_w.setValue(txtDes8.text)
         }
     }
     
@@ -166,41 +171,6 @@ class HistoricController: UIViewController, UIImagePickerControllerDelegate, UIN
     @IBAction func addImage8(_ sender: Any) {
         imageNun = 8
         addImage()
-    }
-    
-    func isImage(){
-        let image1:UIImage? = imageview1.image
-        let image2:UIImage? = imageview2.image
-        let image3:UIImage? = imageview3.image
-        let image4:UIImage? = imageview4.image
-        let image5:UIImage? = imageview5.image
-        let image6:UIImage? = imageview6.image
-        let image7:UIImage? = imageview7.image
-        let image8:UIImage? = imageview8.image
-        if image1 == nil {
-            imageview1.image = UIImage(named: "RManiav1")
-        }
-        if image2 == nil {
-            imageview2.image = UIImage(named: "RManiav1")
-        }
-        if image3 == nil {
-            imageview3.image = UIImage(named: "RManiav1")
-        }
-        if image4 == nil {
-            imageview4.image = UIImage(named: "RManiav1")
-        }
-        if image5 == nil {
-            imageview5.image = UIImage(named: "RManiav1")
-        }
-        if image6 == nil {
-            imageview6.image = UIImage(named: "RManiav1")
-        }
-        if image7 == nil {
-            imageview7.image = UIImage(named: "RManiav1")
-        }
-        if image8 == nil {
-            imageview8.image = UIImage(named: "RManiav1")
-        }
     }
     
     func checkContent(){
@@ -288,25 +258,95 @@ class HistoricController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
-        if imageNun == 1{
-            imageview1.image = image
-        }else if imageNun == 2{
-            imageview2.image = image
-        }else if imageNun == 3{
-            imageview3.image = image
-        }else if imageNun == 4{
-            imageview4.image = image
-        }else if imageNun == 5{
-            imageview5.image = image
-        }else if imageNun == 6{
-            imageview6.image = image
-        }else if imageNun == 7{
-            imageview7.image = image
-        }else if imageNun == 8{
-            imageview8.image = image
-        }
-        imageNun = 0
+        
         picker.dismiss(animated: true, completion: nil)
+        var data = Data()
+        switch imageNun{
+        case 1:
+            data = image.jpegData(compressionQuality: 0.5)!
+            
+            let imageRef = Storage.storage().reference().child("Images/Historic1")
+            
+            _ = imageRef.putData(data, metadata: nil) { (metadata, error) in
+                guard metadata != nil else {
+                    return
+                }
+            }
+            chechImages()
+        case 2:
+            data = image.jpegData(compressionQuality: 0.5)!
+            
+            let imageRef = Storage.storage().reference().child("Images/Historic2")
+            
+            _ = imageRef.putData(data, metadata: nil) { (metadata, error) in
+                guard metadata != nil else {
+                    return
+                }
+            }
+        case 3:
+            data = image.jpegData(compressionQuality: 0.5)!
+            
+            let imageRef = Storage.storage().reference().child("Images/Historic3")
+            
+            _ = imageRef.putData(data, metadata: nil) { (metadata, error) in
+                guard metadata != nil else {
+                    return
+                }
+            }
+        case 4:
+            data = image.jpegData(compressionQuality: 0.5)!
+            
+            let imageRef = Storage.storage().reference().child("Images/Historic4")
+            
+            _ = imageRef.putData(data, metadata: nil) { (metadata, error) in
+                guard metadata != nil else {
+                    return
+                }
+            }
+        case 5:
+            data = image.jpegData(compressionQuality: 0.5)!
+            
+            let imageRef = Storage.storage().reference().child("Images/Historic5")
+            
+            _ = imageRef.putData(data, metadata: nil) { (metadata, error) in
+                guard metadata != nil else {
+                    return
+                }
+            }
+        case 6:
+            data = image.jpegData(compressionQuality: 0.5)!
+            
+            let imageRef = Storage.storage().reference().child("Images/Historic6")
+            
+            _ = imageRef.putData(data, metadata: nil) { (metadata, error) in
+                guard metadata != nil else {
+                    return
+                }
+            }
+        case 7:
+            data = image.jpegData(compressionQuality: 0.5)!
+            
+            let imageRef = Storage.storage().reference().child("Images/Historic7")
+            
+            _ = imageRef.putData(data, metadata: nil) { (metadata, error) in
+                guard metadata != nil else {
+                    return
+                }
+            }
+        case 8:
+            data = image.jpegData(compressionQuality: 0.5)!
+            
+            let imageRef = Storage.storage().reference().child("Images/Historic8")
+            
+            _ = imageRef.putData(data, metadata: nil) { (metadata, error) in
+                guard metadata != nil else {
+                    return
+                }
+            }
+        default:
+            print ("Error")
+        }
+        
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -341,8 +381,154 @@ class HistoricController: UIViewController, UIImagePickerControllerDelegate, UIN
         if Auth.auth().currentUser?.uid != nil{
             if Auth.auth().currentUser?.uid == "ATCiDNYJhYUgD8vRORJW7PaDAmj1"{
                 is_admin()
-                isImage()
             }
         }
+    }
+    
+    //Load image from firebase and display in history page
+    func chechImages(){
+        let image1 = Storage.storage().reference(withPath: "Images/Historic1")
+        let image2 = Storage.storage().reference(withPath: "Images/Historic2")
+        let image3 = Storage.storage().reference(withPath: "Images/Historic3")
+        let image4 = Storage.storage().reference(withPath: "Images/Historic4")
+        let image5 = Storage.storage().reference(withPath: "Images/Historic5")
+        let image6 = Storage.storage().reference(withPath: "Images/Historic6")
+        let image7 = Storage.storage().reference(withPath: "Images/Historic7")
+        let image8 = Storage.storage().reference(withPath: "Images/Historic8")
+        
+        image1.getData(maxSize: 1 * 1024 * 1024) { data, error in
+            if error != nil {
+                // Add logo image if no image found
+                self.imageview1.image = UIImage(named: "RManiav1")
+            } else {
+                // Data for "images"
+                self.imageview1.image = UIImage(data: data!)
+                
+            }
+        }
+        image2.getData(maxSize: 1 * 1024 * 1024) { data, error in
+            if error != nil {
+                // Add logo image if no image found
+                self.imageview2.image = UIImage(named: "RManiav1")
+            } else {
+                // Data for "images"
+                self.imageview2.image = UIImage(data: data!)
+                
+            }
+        }
+        image3.getData(maxSize: 1 * 1024 * 1024) { data, error in
+            if error != nil {
+                // Add logo image if no image found
+                self.imageview3.image = UIImage(named: "RManiav1")
+            } else {
+                // Data for "images"
+                self.imageview3.image = UIImage(data: data!)
+                
+            }
+        }
+        image4.getData(maxSize: 1 * 1024 * 1024) { data, error in
+            if error != nil {
+                // Add logo image if no image found
+                self.imageview4.image = UIImage(named: "RManiav1")
+            } else {
+                // Data for "images"
+                self.imageview4.image = UIImage(data: data!)
+                
+            }
+        }
+        image5.getData(maxSize: 1 * 1024 * 1024) { data, error in
+            if error != nil {
+                // Add logo image if no image found
+                self.imageview5.image = UIImage(named: "RManiav1")
+            } else {
+                // Data for "images"
+                self.imageview5.image = UIImage(data: data!)
+                
+            }
+        }
+        image6.getData(maxSize: 1 * 1024 * 1024) { data, error in
+            if error != nil {
+                // Add logo image if no image found
+                self.imageview6.image = UIImage(named: "RManiav1")
+            } else {
+                // Data for "images"
+                self.imageview6.image = UIImage(data: data!)
+                
+            }
+        }
+        image7.getData(maxSize: 1 * 1024 * 1024) { data, error in
+            if error != nil {
+                // Add logo image if no image found
+                self.imageview7.image = UIImage(named: "RManiav1")
+            } else {
+                // Data for "images"
+                self.imageview7.image = UIImage(data: data!)
+                
+            }
+        }
+        image8.getData(maxSize: 1 * 1024 * 1024) { data, error in
+            if error != nil {
+                // Add logo image if no image found
+                self.imageview8.image = UIImage(named: "RManiav1")
+            } else {
+                // Data for "images"
+                self.imageview8.image = UIImage(data: data!)
+                
+            }
+        }
+    }
+    
+    // Check to see if there is any previous winners information from firebase
+    // and fetch it to display
+    func check_db_for_previous_winners(){
+        let previous_w = ref.child("Winners")
+        // Winner 1
+        handle = previous_w.child("Winner1").observe(.value, with: { (snapshot) in
+            if snapshot.value as? String != nil{
+                self.lblDes1.text = (snapshot.value as! String)
+            }
+        })
+        // Winner 2
+        handle = previous_w.child("Winner2").observe(.value, with: { (snapshot) in
+            if snapshot.value as? String != nil{
+                self.lblDes2.text = (snapshot.value as! String)
+            }
+        })
+        // Winner 3
+        handle = previous_w.child("Winner3").observe(.value, with: { (snapshot) in
+            if snapshot.value as? String != nil{
+                self.lblDes3.text = (snapshot.value as! String)
+            }
+        })
+        // Winner 4
+        handle = previous_w.child("Winner4").observe(.value, with: { (snapshot) in
+            if snapshot.value as? String != nil{
+                self.lblDes4.text = (snapshot.value as! String)
+            }
+        })
+        // Winner 5
+        handle = previous_w.child("Winner5").observe(.value, with: { (snapshot) in
+            if snapshot.value as? String != nil{
+                self.lblDes5.text = (snapshot.value as! String)
+            }
+        })
+        // Winner 6
+        handle = previous_w.child("Winner6").observe(.value, with: { (snapshot) in
+            if snapshot.value as? String != nil{
+                self.lblDes6.text = (snapshot.value as! String)
+            }
+        })
+        // Winner 7
+        handle = previous_w.child("Winner7").observe(.value, with: { (snapshot) in
+            if snapshot.value as? String != nil{
+                self.lblDes7.text = (snapshot.value as! String)
+            }
+        })
+        // Winner 8
+        handle = previous_w.child("Winner8").observe(.value, with: { (snapshot) in
+            if snapshot.value as? String != nil{
+                self.lblDes8.text = (snapshot.value as! String)
+            }
+        })
     }
 }

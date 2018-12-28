@@ -214,6 +214,8 @@ class MenuController: UIViewController {
                         new = new + " \(name);"
                         loopNum = 1
                     }
+                    let names_to_sort = self.ref.child(value!).child("Names to sort")
+                    names_to_sort.setValue(new)
                     self.lblParticipants.text = new
                     self.lblno_participants.text = "\(names.count) Participant/s!"
                 }
