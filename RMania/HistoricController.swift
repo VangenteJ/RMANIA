@@ -7,6 +7,10 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseDatabase
+import FirebaseAuth
+import FirebaseStorage
 
 class HistoricController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -70,10 +74,9 @@ class HistoricController: UIViewController, UIImagePickerControllerDelegate, UIN
     override func viewDidLoad() {
         super.viewDidLoad()
         isImage()
-        //is_admin()
-        //checkContent()
+        admin_status()
+        checkContent()
 
-        // Do any additional setup after loading the view.
     }
     
 
@@ -201,76 +204,86 @@ class HistoricController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     func checkContent(){
-        if imageview1 != UIImage(named: "RManiav1"){
+        if lblDes1.text != "None"{
+            imageview1.isHidden = false
             lblDes1.isHidden = false
         }
         
-        if lblDes2.text == "Label"{
-            imageview2.isHidden = true
-            lblDes2.isHidden = true
+        if lblDes2.text != "None"{
+            imageview2.isHidden = false
+            lblDes2.isHidden = false
         }
         
-        if lblDes3.text == "Label"{
-            imageview3.isHidden = true
-            lblDes3.isHidden = true
+        if lblDes3.text != "None"{
+            imageview3.isHidden = false
+            lblDes3.isHidden = false
         }
         
-        if lblDes4.text == "Label"{
-            imageview4.isHidden = true
-            lblDes4.isHidden = true
+        if lblDes4.text != "None"{
+            imageview4.isHidden = false
+            lblDes4.isHidden = false
         }
         
-        if lblDes4.text == "Label"{
-            imageview4.isHidden = true
-            lblDes4.isHidden = true
+        if lblDes4.text != "None"{
+            imageview4.isHidden = false
+            lblDes4.isHidden = false
         }
         
-        if lblDes5.text == "Label"{
-            imageview5.isHidden = true
-            lblDes5.isHidden = true
+        if lblDes5.text != "None"{
+            imageview5.isHidden = false
+            lblDes5.isHidden = false
         }
         
-        if lblDes6.text == "Label"{
-            imageview6.isHidden = true
-            lblDes6.isHidden = true
+        if lblDes6.text != "None"{
+            imageview6.isHidden = false
+            lblDes6.isHidden = false
         }
         
-        if lblDes7.text == "Label"{
-            imageview7.isHidden = true
-            lblDes7.isHidden = true
+        if lblDes7.text != "None"{
+            imageview7.isHidden = false
+            lblDes7.isHidden = false
         }
         
-        if lblDes8.text == "Label"{
-            imageview8.isHidden = true
-            lblDes8.isHidden = true
+        if lblDes8.text != "None"{
+            imageview8.isHidden = false
+            lblDes8.isHidden = false
         }
     }
     
     func is_admin(){
-        btnAdd1.isHidden = true
-        btnAdd2.isHidden = true
-        btnAdd3.isHidden = true
-        btnAdd4.isHidden = true
-        btnAdd5.isHidden = true
-        btnAdd6.isHidden = true
-        btnAdd7.isHidden = true
-        btnAdd8.isHidden = true
-        txtDes1.isHidden = true
-        txtDes2.isHidden = true
-        txtDes3.isHidden = true
-        txtDes4.isHidden = true
-        txtDes5.isHidden = true
-        txtDes6.isHidden = true
-        txtDes7.isHidden = true
-        txtDes8.isHidden = true
-        btnAddDes1.isHidden = true
-        btnAddDes2.isHidden = true
-        btnAddDes3.isHidden = true
-        btnAddDes4.isHidden = true
-        btnAddDes5.isHidden = true
-        btnAddDes6.isHidden = true
-        btnAddDes7.isHidden = true
-        btnAddDes8.isHidden = true
+        btnAdd1.isHidden = false
+        btnAdd2.isHidden = false
+        btnAdd3.isHidden = false
+        btnAdd4.isHidden = false
+        btnAdd5.isHidden = false
+        btnAdd6.isHidden = false
+        btnAdd7.isHidden = false
+        btnAdd8.isHidden = false
+        txtDes1.isHidden = false
+        txtDes2.isHidden = false
+        txtDes3.isHidden = false
+        txtDes4.isHidden = false
+        txtDes5.isHidden = false
+        txtDes6.isHidden = false
+        txtDes7.isHidden = false
+        txtDes8.isHidden = false
+        btnAddDes1.isHidden = false
+        btnAddDes2.isHidden = false
+        btnAddDes3.isHidden = false
+        btnAddDes4.isHidden = false
+        btnAddDes5.isHidden = false
+        btnAddDes6.isHidden = false
+        btnAddDes7.isHidden = false
+        btnAddDes8.isHidden = false
+        
+        imageview1.isHidden = false
+        imageview2.isHidden = false
+        imageview3.isHidden = false
+        imageview4.isHidden = false
+        imageview5.isHidden = false
+        imageview6.isHidden = false
+        imageview7.isHidden = false
+        imageview8.isHidden = false
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -322,5 +335,14 @@ class HistoricController: UIViewController, UIImagePickerControllerDelegate, UIN
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
         self.present(actionSheet, animated: true, completion: nil)
+    }
+    
+    func admin_status(){
+        if Auth.auth().currentUser?.uid != nil{
+            if Auth.auth().currentUser?.uid == "ATCiDNYJhYUgD8vRORJW7PaDAmj1"{
+                is_admin()
+                isImage()
+            }
+        }
     }
 }

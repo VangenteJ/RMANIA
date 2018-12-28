@@ -30,17 +30,22 @@ class MenuController: UIViewController {
     @IBOutlet weak var lblno_participants: UILabel!
     @IBOutlet weak var lblno_selers: UILabel!
     
+    @IBOutlet weak var lblToken: UILabel!
+    
+    @IBOutlet weak var btnAdmin: UIButton!
+    
     var handle:DatabaseHandle?
     var ref:DatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        admin_status()
         ref = Database.database().reference()
         chechImages()
         retrieveData()
         showParticipants()
         showSalers()
-        
+        display_token()
     }
     
     @IBAction func Pay_PayPal(_ sender: Any) {
@@ -253,5 +258,19 @@ class MenuController: UIViewController {
         })
         
     }
-
+    
+    func display_token(){
+        if Auth.auth().currentUser?.uid != nil{
+            let token = Auth.auth().currentUser?.uid
+            lblToken.text = "Your token is: _\(String((token?.suffix(6))!))"
+        }
+    }
+    
+    func admin_status(){
+        if Auth.auth().currentUser?.uid != nil{
+            if Auth.auth().currentUser?.uid == "ATCiDNYJhYUgD8vRORJW7PaDAmj1"{
+                btnAdmin.isHidden = false
+            }
+        }
+    }
 }
