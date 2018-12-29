@@ -112,8 +112,6 @@ class ViewController: UIViewController {
             stackYesNo.isHidden = false
             btnLog_Reg.isEnabled = false
             lblUser.text = "Email \(user!)?"
-        }else{
-            print ("It iss nil")
         }
     }
     

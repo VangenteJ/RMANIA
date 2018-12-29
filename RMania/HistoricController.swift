@@ -68,7 +68,6 @@ class HistoricController: UIViewController, UIImagePickerControllerDelegate, UIN
         super.viewDidLoad()
         ref = Database.database().reference()
         admin_status()
-        checkContent()
         chechImages()
         check_db_for_previous_winners()
     }
@@ -173,53 +172,6 @@ class HistoricController: UIViewController, UIImagePickerControllerDelegate, UIN
         addImage()
     }
     
-    func checkContent(){
-        if lblDes1.text != "None"{
-            imageview1.isHidden = false
-            lblDes1.isHidden = false
-        }
-        
-        if lblDes2.text != "None"{
-            imageview2.isHidden = false
-            lblDes2.isHidden = false
-        }
-        
-        if lblDes3.text != "None"{
-            imageview3.isHidden = false
-            lblDes3.isHidden = false
-        }
-        
-        if lblDes4.text != "None"{
-            imageview4.isHidden = false
-            lblDes4.isHidden = false
-        }
-        
-        if lblDes4.text != "None"{
-            imageview4.isHidden = false
-            lblDes4.isHidden = false
-        }
-        
-        if lblDes5.text != "None"{
-            imageview5.isHidden = false
-            lblDes5.isHidden = false
-        }
-        
-        if lblDes6.text != "None"{
-            imageview6.isHidden = false
-            lblDes6.isHidden = false
-        }
-        
-        if lblDes7.text != "None"{
-            imageview7.isHidden = false
-            lblDes7.isHidden = false
-        }
-        
-        if lblDes8.text != "None"{
-            imageview8.isHidden = false
-            lblDes8.isHidden = false
-        }
-    }
-    
     func is_admin(){
         btnAdd1.isHidden = false
         btnAdd2.isHidden = false
@@ -237,6 +189,16 @@ class HistoricController: UIViewController, UIImagePickerControllerDelegate, UIN
         txtDes6.isHidden = false
         txtDes7.isHidden = false
         txtDes8.isHidden = false
+        
+        lblDes1.isHidden = false
+        lblDes2.isHidden = false
+        lblDes3.isHidden = false
+        lblDes4.isHidden = false
+        lblDes5.isHidden = false
+        lblDes6.isHidden = false
+        lblDes7.isHidden = false
+        lblDes8.isHidden = false
+        
         btnAddDes1.isHidden = false
         btnAddDes2.isHidden = false
         btnAddDes3.isHidden = false
@@ -485,49 +447,73 @@ class HistoricController: UIViewController, UIImagePickerControllerDelegate, UIN
         // Winner 1
         handle = previous_w.child("Winner1").observe(.value, with: { (snapshot) in
             if snapshot.value as? String != nil{
-                self.lblDes1.text = (snapshot.value as! String)
+                let winner = snapshot.value as? String
+                self.lblDes1.text = winner
+                self.imageview1.isHidden = false
+                self.lblDes1.isHidden = false
             }
         })
         // Winner 2
         handle = previous_w.child("Winner2").observe(.value, with: { (snapshot) in
             if snapshot.value as? String != nil{
-                self.lblDes2.text = (snapshot.value as! String)
+                let winner = snapshot.value as? String
+                self.lblDes2.text = winner
+                self.imageview2.isHidden = false
+                self.lblDes2.isHidden = false
             }
         })
         // Winner 3
         handle = previous_w.child("Winner3").observe(.value, with: { (snapshot) in
             if snapshot.value as? String != nil{
-                self.lblDes3.text = (snapshot.value as! String)
+                let winner = snapshot.value as? String
+                self.lblDes3.text = winner
+                self.imageview3.isHidden = false
+                self.lblDes3.isHidden = false
             }
         })
         // Winner 4
         handle = previous_w.child("Winner4").observe(.value, with: { (snapshot) in
             if snapshot.value as? String != nil{
-                self.lblDes4.text = (snapshot.value as! String)
+                let winner = snapshot.value as? String
+                self.lblDes4.text = winner
+                self.imageview4.isHidden = false
+                self.lblDes4.isHidden = false
             }
         })
         // Winner 5
         handle = previous_w.child("Winner5").observe(.value, with: { (snapshot) in
             if snapshot.value as? String != nil{
-                self.lblDes5.text = (snapshot.value as! String)
+                let winner = snapshot.value as? String
+                self.lblDes5.text = winner
+                self.imageview5.isHidden = false
+                self.lblDes5.isHidden = false
             }
         })
         // Winner 6
         handle = previous_w.child("Winner6").observe(.value, with: { (snapshot) in
             if snapshot.value as? String != nil{
-                self.lblDes6.text = (snapshot.value as! String)
+                let winner = snapshot.value as? String
+                self.lblDes6.text = winner
+                self.imageview6.isHidden = false
+                self.lblDes6.isHidden = false
             }
         })
         // Winner 7
         handle = previous_w.child("Winner7").observe(.value, with: { (snapshot) in
             if snapshot.value as? String != nil{
-                self.lblDes7.text = (snapshot.value as! String)
+                let winner = snapshot.value as? String
+                self.lblDes7.text = winner
+                self.imageview7.isHidden = false
+                self.lblDes7.isHidden = false
             }
         })
         // Winner 8
         handle = previous_w.child("Winner8").observe(.value, with: { (snapshot) in
             if snapshot.value as? String != nil{
-                self.lblDes8.text = (snapshot.value as! String)
+                let winner = snapshot.value as? String
+                self.lblDes8.text = winner
+                self.imageview8.isHidden = false
+                self.lblDes8.isHidden = false
             }
         })
     }
