@@ -667,15 +667,105 @@
             <objects>
                 <viewController storyboardIdentifier="HelpController" id="NZD-9S-0rh" customClass="HelpController" customModule="RMania" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5ai-l8-9bR">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="983"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i9D-s1-xjT">
+                                <rect key="frame" x="5" y="0.0" width="365" height="983"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3u1-OT-0CB">
+                                        <rect key="frame" x="0.0" y="0.0" width="365" height="1005"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="fwe-dW-Hfe">
+                                                <rect key="frame" x="0.0" y="28" width="365" height="949"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Help" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QSd-T1-skb">
+                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="26.5"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="22"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8W4-zU-Nnw">
+                                                        <rect key="frame" x="0.0" y="36.5" width="365" height="872.5"/>
+                                                        <mutableString key="text">This app provides prize competition challenge!
+There is a total of 10 minor winners and 1 major winner.
+
+Minor winners will get at least single entry refunded.
+
+By default, the very first participant and very last participant, will get their entry refunded if they are not either minor or major winner.
+
+After logging in, your token is shown at the very top of the screen (above images).
+
+To participate, use your token with a combination of any name you want in order to buy your entry.
+
+Maximum of 5 entries can be purchased by each single player.
+
+Participants may also sell entries by inviting a friend and asking the friend to provide their name followed by their token. 
+(i.e Participant A invites a friend, the friend will then buy entry and add Participant A’s name followed by participant A’s token)
+
+The winner will be selected by a live stream displayed in Python IDE where all participant names will be added into array of names and 11 names will be randomly printed. 
+The process will be created from scratch in a live stream. 
+
+Participants can see all past winners through the “History page” within the app.
+
+For each invited friend that buys entry:
+If entry over £45 you get £10
+If entry over £25 you get £5
+If entry over £10 you get £3
+If entry over £5 you get £2</mutableString>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wlo-ZV-N7D">
+                                                        <rect key="frame" x="0.0" y="919" width="34" height="30"/>
+                                                        <state key="normal" title="Back"/>
+                                                        <connections>
+                                                            <action selector="back:" destination="NZD-9S-0rh" eventType="touchUpInside" id="2ZJ-c9-4Ra"/>
+                                                            <segue destination="wi5-Wr-SvA" kind="show" identifier="backtoMain" id="zyr-si-868"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="wlo-ZV-N7D" secondAttribute="bottom" id="Zav-Js-44z"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.61550921199999997" green="0.91302579640000003" blue="0.98825091119999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstItem="fwe-dW-Hfe" firstAttribute="centerX" secondItem="3u1-OT-0CB" secondAttribute="centerX" id="29V-EH-jxb"/>
+                                            <constraint firstAttribute="trailing" secondItem="fwe-dW-Hfe" secondAttribute="trailing" id="6uj-9q-MTT"/>
+                                            <constraint firstItem="fwe-dW-Hfe" firstAttribute="width" secondItem="3u1-OT-0CB" secondAttribute="width" id="QNv-Sc-n4I"/>
+                                            <constraint firstItem="fwe-dW-Hfe" firstAttribute="leading" secondItem="3u1-OT-0CB" secondAttribute="leading" id="YTG-xi-mem"/>
+                                            <constraint firstItem="fwe-dW-Hfe" firstAttribute="top" secondItem="3u1-OT-0CB" secondAttribute="top" constant="28" id="dw1-1M-iFr"/>
+                                            <constraint firstItem="fwe-dW-Hfe" firstAttribute="centerY" secondItem="3u1-OT-0CB" secondAttribute="centerY" id="wGk-ME-LP3"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="3u1-OT-0CB" firstAttribute="top" secondItem="i9D-s1-xjT" secondAttribute="top" id="Gey-AH-Vom"/>
+                                    <constraint firstItem="3u1-OT-0CB" firstAttribute="width" secondItem="i9D-s1-xjT" secondAttribute="width" id="HQW-2w-atp"/>
+                                    <constraint firstAttribute="bottom" secondItem="3u1-OT-0CB" secondAttribute="bottom" id="bAe-gk-Nlu"/>
+                                    <constraint firstAttribute="trailing" secondItem="3u1-OT-0CB" secondAttribute="trailing" id="oce-49-1hp"/>
+                                    <constraint firstItem="3u1-OT-0CB" firstAttribute="leading" secondItem="i9D-s1-xjT" secondAttribute="leading" id="ryv-bL-KuW"/>
+                                    <constraint firstItem="3u1-OT-0CB" firstAttribute="height" secondItem="i9D-s1-xjT" secondAttribute="height" priority="250" id="sNJ-DP-6He"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" red="0.61550921199999997" green="0.91302579640000003" blue="0.98825091119999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="UFB-KD-4Dv" firstAttribute="trailing" secondItem="i9D-s1-xjT" secondAttribute="trailing" constant="5" id="JkV-cl-sq0"/>
+                            <constraint firstItem="UFB-KD-4Dv" firstAttribute="top" secondItem="i9D-s1-xjT" secondAttribute="top" constant="20" id="VYT-Qj-Q5x"/>
+                            <constraint firstItem="i9D-s1-xjT" firstAttribute="leading" secondItem="UFB-KD-4Dv" secondAttribute="leading" constant="5" id="XZQ-6w-MmO"/>
+                            <constraint firstItem="UFB-KD-4Dv" firstAttribute="bottom" secondItem="i9D-s1-xjT" secondAttribute="bottom" id="uvF-uF-5SN"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="UFB-KD-4Dv"/>
                     </view>
+                    <size key="freeformSize" width="375" height="983"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="po6-qX-oVM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1985" y="-811"/>
+            <point key="canvasLocation" x="1984.8" y="-812.29385307346331"/>
         </scene>
         <!--Menu Controller-->
         <scene sceneID="4I9-or-OCm">
@@ -1499,4 +1589,7 @@
     <resources>
         <image name="RManiabiggerV2" width="283" height="198"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="zyr-si-868"/>
+    </inferredMetricsTieBreakers>
 </document>
