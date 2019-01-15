@@ -18,6 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         FirebaseApp.configure()
+        
+        PayPalMobile.initializeWithClientIds(forEnvironments: [PayPalEnvironmentProduction: "AW4-eXw_M6XOrvXOFU2k0fPvc-NjuEd49F1m66S358hmjjZI0o6AbYucVDglC_ybiA6EHAU0_vFMDwTH", PayPalEnvironmentSandbox: "AW4-eXw_M6XOrvXOFU2k0fPvc-NjuEd49F1m66S358hmjjZI0o6AbYucVDglC_ybiA6EHAU0_vFMDwTH"])
+        
+        
         return true
     }
 

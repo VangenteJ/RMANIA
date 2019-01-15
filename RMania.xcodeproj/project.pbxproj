@@ -18,6 +18,15 @@
 		0C6BD56021B007ED00048769 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6BD55F21B007ED00048769 /* MenuController.swift */; };
 		0C6BD56221B0080500048769 /* HistoricController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6BD56121B0080500048769 /* HistoricController.swift */; };
 		0CC412F021C56589004D9C97 /* AdminController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC412EF21C56589004D9C97 /* AdminController.swift */; };
+		0CEAF8A821EE28000087EECB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CEAF89F21EE28000087EECB /* SystemConfiguration.framework */; };
+		0CEAF8A921EE28000087EECB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CEAF8A021EE28000087EECB /* AudioToolbox.framework */; };
+		0CEAF8AA21EE28000087EECB /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CEAF8A121EE28000087EECB /* MobileCoreServices.framework */; };
+		0CEAF8AB21EE28000087EECB /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CEAF8A221EE28000087EECB /* CoreMedia.framework */; };
+		0CEAF8AC21EE28000087EECB /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CEAF8A321EE28000087EECB /* MessageUI.framework */; };
+		0CEAF8AD21EE28000087EECB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CEAF8A421EE28000087EECB /* CoreLocation.framework */; };
+		0CEAF8AE21EE28000087EECB /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CEAF8A521EE28000087EECB /* Accelerate.framework */; };
+		0CEAF8AF21EE28000087EECB /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CEAF8A621EE28000087EECB /* SafariServices.framework */; };
+		0CEAF8B021EE28000087EECB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CEAF8A721EE28000087EECB /* AVFoundation.framework */; };
 		A5B8032ED75570F9A84AC490 /* Pods_RMania.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFC81127D6FE20FE9428DE8E /* Pods_RMania.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +44,17 @@
 		0C6BD55F21B007ED00048769 /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuController.swift; sourceTree = "<group>"; };
 		0C6BD56121B0080500048769 /* HistoricController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricController.swift; sourceTree = "<group>"; };
 		0CC412EF21C56589004D9C97 /* AdminController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminController.swift; sourceTree = "<group>"; };
+		0CEAF89B21EE26610087EECB /* RMania-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RMania-Bridging-Header.h"; sourceTree = "<group>"; };
+		0CEAF89E21EE26E50087EECB /* ZZAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZAppDelegate.h; sourceTree = "<group>"; };
+		0CEAF89F21EE28000087EECB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		0CEAF8A021EE28000087EECB /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		0CEAF8A121EE28000087EECB /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		0CEAF8A221EE28000087EECB /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		0CEAF8A321EE28000087EECB /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		0CEAF8A421EE28000087EECB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		0CEAF8A521EE28000087EECB /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		0CEAF8A621EE28000087EECB /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
+		0CEAF8A721EE28000087EECB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		1F9D47C8AA6BB1F1B9496972 /* Pods-RMania.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RMania.debug.xcconfig"; path = "Target Support Files/Pods-RMania/Pods-RMania.debug.xcconfig"; sourceTree = "<group>"; };
 		7F3073A99E0B3D4F04D75139 /* Pods-RMania.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RMania.release.xcconfig"; path = "Target Support Files/Pods-RMania/Pods-RMania.release.xcconfig"; sourceTree = "<group>"; };
 		EFC81127D6FE20FE9428DE8E /* Pods_RMania.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RMania.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,6 +65,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CEAF8A821EE28000087EECB /* SystemConfiguration.framework in Frameworks */,
+				0CEAF8A921EE28000087EECB /* AudioToolbox.framework in Frameworks */,
+				0CEAF8AA21EE28000087EECB /* MobileCoreServices.framework in Frameworks */,
+				0CEAF8AB21EE28000087EECB /* CoreMedia.framework in Frameworks */,
+				0CEAF8AC21EE28000087EECB /* MessageUI.framework in Frameworks */,
+				0CEAF8AD21EE28000087EECB /* CoreLocation.framework in Frameworks */,
+				0CEAF8AE21EE28000087EECB /* Accelerate.framework in Frameworks */,
+				0CEAF8AF21EE28000087EECB /* SafariServices.framework in Frameworks */,
+				0CEAF8B021EE28000087EECB /* AVFoundation.framework in Frameworks */,
 				A5B8032ED75570F9A84AC490 /* Pods_RMania.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -85,6 +114,8 @@
 				0C6BD55421AF4A7200048769 /* LaunchScreen.storyboard */,
 				0C6BD55721AF4A7200048769 /* Info.plist */,
 				0C6BD55D21AF4A8D00048769 /* GoogleService-Info.plist */,
+				0CEAF89B21EE26610087EECB /* RMania-Bridging-Header.h */,
+				0CEAF89E21EE26E50087EECB /* ZZAppDelegate.h */,
 			);
 			path = RMania;
 			sourceTree = "<group>";
@@ -92,6 +123,15 @@
 		3A06CD48F6055ED4A9B31241 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0CEAF8A521EE28000087EECB /* Accelerate.framework */,
+				0CEAF8A021EE28000087EECB /* AudioToolbox.framework */,
+				0CEAF8A721EE28000087EECB /* AVFoundation.framework */,
+				0CEAF8A421EE28000087EECB /* CoreLocation.framework */,
+				0CEAF8A221EE28000087EECB /* CoreMedia.framework */,
+				0CEAF8A321EE28000087EECB /* MessageUI.framework */,
+				0CEAF8A121EE28000087EECB /* MobileCoreServices.framework */,
+				0CEAF8A621EE28000087EECB /* SafariServices.framework */,
+				0CEAF89F21EE28000087EECB /* SystemConfiguration.framework */,
 				EFC81127D6FE20FE9428DE8E /* Pods_RMania.framework */,
 			);
 			name = Frameworks;
@@ -140,6 +180,7 @@
 				TargetAttributes = {
 					0C6BD54721AF4A7100048769 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -386,6 +427,7 @@
 			baseConfigurationReference = 1F9D47C8AA6BB1F1B9496972 /* Pods-RMania.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F6D2M9YW4C;
 				INFOPLIST_FILE = RMania/Info.plist;
@@ -395,6 +437,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = uni.RMania;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "RMania/RMania-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -405,6 +449,7 @@
 			baseConfigurationReference = 7F3073A99E0B3D4F04D75139 /* Pods-RMania.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F6D2M9YW4C;
 				INFOPLIST_FILE = RMania/Info.plist;
@@ -414,6 +459,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = uni.RMania;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "RMania/RMania-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

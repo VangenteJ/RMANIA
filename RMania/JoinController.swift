@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 
-class JoinController: UIViewController {
+class JoinController: UIViewController, PayPalPaymentDelegate{
 
     @IBOutlet weak var stackEntry2: UIStackView!
     @IBOutlet weak var stackEntry3: UIStackView!
@@ -36,11 +36,37 @@ class JoinController: UIViewController {
     
     let user = Auth.auth().currentUser
     
+    //Paypal integration
+    var payPalConfig = PayPalConfiguration()
+    
+    var environment:String = PayPalEnvironmentNoNetwork {
+        willSet(newEnvironment) {
+            if (newEnvironment != environment) {
+                PayPalMobile.preconnect(withEnvironment: newEnvironment)
+            }
+        }
+    }
+    
+    var acceptCreditCards: Bool = true {
+        didSet {
+            payPalConfig.acceptCreditCards = acceptCreditCards
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         ref = Database.database().reference()
         getPrice_From_DB()
         checkEntries()
+        
+        payPalConfig.acceptCreditCards = acceptCreditCards;
+        payPalConfig.merchantName = "Joel Vangente"
+        //        payPalConfig.merchantPrivacyPolicyURL = NSURL(string: "https://www.sivaganesh.com/privacy.html") as URL?
+        //        payPalConfig.merchantUserAgreementURL = NSURL(string: "https://www.sivaganesh.com/useragreement.html")! as URL
+        payPalConfig.languageOrLocale = NSLocale.preferredLanguages[0]
+        payPalConfig.payPalShippingAddressOption = .payPal;
+        
+        PayPalMobile.preconnect(withEnvironment: environment)
 
     }
     
@@ -105,9 +131,61 @@ class JoinController: UIViewController {
         }
     }
     
+    // PayPalPaymentDelegate
+    
+    func payPalPaymentDidCancel(_ paymentViewController: PayPalPaymentViewController) {
+        print("PayPal Payment Cancelled")
+        paymentViewController.dismiss(animated: true, completion: nil)
+    }
+    
+    func payPalPaymentViewController(_ paymentViewController: PayPalPaymentViewController, didComplete completedPayment: PayPalPayment) {
+        
+        print("PayPal Payment Success !")
+        paymentViewController.dismiss(animated: true, completion: { () -> Void in
+            // send completed confirmaion to your server
+            self.add_entry_to_db()
+            self.add_seler_to_DB()
+            print("Here is your proof of payment:\n\n\(completedPayment.confirmation)\n\nSend this to your server for confirmation and fulfillment.")
+        })
+    }
+    
     @IBAction func payment(_ sender: Any) {
-        add_entry_to_db()
-        add_seler_to_DB()
+        let item = ref.child("Description Values")
+        handle = item.child("Item").observe(.value, with: { (snapshot) in
+            if snapshot.value as? String != nil{
+                let value = snapshot.value as? String
+                
+                // Process Payment once the pay button is clicked.
+                
+                let item1 = PayPalItem(name: "Siva Ganesh Test Item", withQuantity: 1, withPrice: NSDecimalNumber(string: "1.00"), withCurrency: "GBP", withSku: "SivaGanesh-0001")
+                
+                let items = [item1]
+                let subtotal = PayPalItem.totalPrice(forItems: items)
+                
+                // Optional: include payment details
+                let shipping = NSDecimalNumber(string: "0.00")
+                let tax = NSDecimalNumber(string: "0.00")
+                let paymentDetails = PayPalPaymentDetails(subtotal: subtotal, withShipping: shipping, withTax: tax)
+                
+                let total = subtotal.adding(shipping).adding(tax)
+                
+                let payment = PayPalPayment(amount: total, currencyCode: "GBP", shortDescription: "Alisha being sold at", intent: .sale)
+                
+                payment.items = items
+                payment.paymentDetails = paymentDetails
+                
+                if (payment.processable) {
+                    
+                    let paymentViewController = PayPalPaymentViewController(payment: payment, configuration: self.payPalConfig, delegate: self)
+                    self.present(paymentViewController!, animated: true, completion: nil)
+                }
+                else {
+                    
+                    print("Payment not processalbe: \(payment)")
+                }
+            }
+        })
+        
     }
     
     @IBAction func cancellation(_ sender: Any) {
